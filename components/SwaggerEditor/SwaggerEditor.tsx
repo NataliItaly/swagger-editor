@@ -121,7 +121,7 @@ export default function SwaggerEditor({
         onSave={handleSave}
       />
       <Editor
-        height="200px"
+        className="h-40 mb-5"
         language={format}
         value={editorValue}
         onChange={handleChange}

@@ -1,5 +1,11 @@
 import EndpointItem from '../EndpointItem/EndpointItem';
 import type { Endpoint } from '@/types/endpoint';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../ui/accordion';
 
 export type EndpointListProps = {
   endpoints: Endpoint[];
@@ -7,13 +13,20 @@ export type EndpointListProps = {
 
 export default function EndpointList({ endpoints }: EndpointListProps) {
   return (
-    <ul>
+    <Accordion type="single" collapsible>
       {endpoints.map((endpoint) => (
-        <EndpointItem
+        <AccordionItem
           key={`${endpoint.method}-${endpoint.path}`}
-          endpoint={endpoint}
-        />
+          value={`${endpoint.method}-${endpoint.path}`}
+        >
+          <AccordionTrigger>
+            <EndpointItem endpoint={endpoint} />
+          </AccordionTrigger>
+          <AccordionContent className="px-4">
+            Endpoit details...
+          </AccordionContent>
+        </AccordionItem>
       ))}
-    </ul>
+    </Accordion>
   );
 }

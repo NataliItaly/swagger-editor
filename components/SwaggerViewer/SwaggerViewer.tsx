@@ -19,7 +19,7 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
   const endpoints: Endpoint[] = getEndpoints(schema);
 
   return (
-    <div className="w-lg h-28 bg-indigo-500 p-4">
+    <div className="w-lg h-fit h-28 p-2">
       {endpoints.length === 0 ? (
         <p>No endpoints</p>
       ) : (

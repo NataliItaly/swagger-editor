@@ -7,13 +7,13 @@ export type EndpointItemProps = {
 
 export default function EndpointItem({ endpoint }: EndpointItemProps) {
   return (
-    <li className="p-4 flex gap-4">
+    <div className="px-4 flex gap-4">
       <span
         className={`inline-block w-12 rounde-md p-1 text-sm uppercase border-l-2 ${getMethodColor(endpoint.method)}`}
       >
         {endpoint.method.toUpperCase()}
       </span>{' '}
       {endpoint.path}
-    </li>
+    </div>
   );
 }

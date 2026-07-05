@@ -1,4 +1,5 @@
 import type { Format } from '@/types/swagger';
+import { Button } from '@/components/ui/button';
 
 export type ToolbarProps = {
   format: Format;
@@ -14,7 +15,7 @@ export default function Toolbar({
   onSave,
 }: ToolbarProps) {
   return (
-    <div>
+    <div className="mb-5">
       <button
         style={{ background: format === 'json' ? 'blue' : 'gray' }}
         onClick={onConvertToJSON}
