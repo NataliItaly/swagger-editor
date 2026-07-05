@@ -9,6 +9,8 @@ import detectFormat from '@/lib/detectFormat';
 import validateSchema from '@/lib/validateSchema';
 import Toolbar from './Toolbar';
 import ValidationMessage from './ValidationMessage';
+import getValidationMessage from '@/lib/getValidationMessage';
+import type { ValidationResult } from '@/lib/getValidationMessage';
 
 const VALIDATION_DELAY = 1000;
 
@@ -51,7 +53,8 @@ export default function SwaggerEditor({
     `,
   );
   const [format, setFormat] = useState<Format>('yaml');
-  const [validationError, setValidationError] = useState<string | null>(null);
+  const [validationError, setValidationError] =
+    useState<ValidationResult | null>(null);
 
   function handleChange(value: string | undefined) {
     const text = value ?? '';
@@ -87,7 +90,7 @@ export default function SwaggerEditor({
       } catch (e) {
         onSchemaChange(null);
         if (e instanceof Error) {
-          setValidationError(e.message);
+          setValidationError(getValidationMessage(e));
           console.log(e.message);
         }
 
@@ -101,7 +104,7 @@ export default function SwaggerEditor({
         console.log('VALID');
       } catch (e) {
         if (e instanceof Error) {
-          setValidationError(e.message);
+          setValidationError(getValidationMessage(e));
         }
       }
     }, VALIDATION_DELAY);
@@ -125,7 +128,7 @@ export default function SwaggerEditor({
         value={editorValue}
         onChange={handleChange}
       />
-      {validationError && <ValidationMessage message={validationError} />}
+      {validationError && <ValidationMessage validation={validationError} />}
     </div>
   );
 }
