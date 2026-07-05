@@ -37,10 +37,13 @@ export default function SwaggerEditor({
             responses:
               "200":
                 description: OK
-            parameters: [
-              name: limit
-              in: query
-            ]
+            parameters:
+              - name: limit
+                in: query
+                required: false
+                description: Maximum number of pets
+                schema:
+                  type: integer
           post:
               summary: Create pet
               responses:

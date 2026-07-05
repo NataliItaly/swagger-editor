@@ -1,7 +1,7 @@
 export type Operation = {
   summary?: string;
   description?: string;
-  parameters?: unknown[];
+  parameters?: Parameter[];
   requestBody?: unknown;
   responses?: unknown;
 };
@@ -10,6 +10,16 @@ export interface Endpoint {
   path: string;
   method: HttpMethod;
   operation: Operation;
+}
+
+export interface Parameter {
+  name: string;
+  in: 'path' | 'query' | 'header' | 'cookie';
+  required?: boolean;
+  description: string;
+  schema?: {
+    type?: string;
+  };
 }
 
 export const HTTP_METHODS = [
