@@ -18,8 +18,6 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
 
   const endpoints: Endpoint[] = getEndpoints(schema);
 
-  //const paths = Object.keys(schema.paths ?? {});
-
   return (
     <div className="w-lg h-28 bg-indigo-500 p-4">
       {endpoints.length === 0 ? (

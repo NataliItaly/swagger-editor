@@ -1,4 +1,5 @@
 import type { Endpoint } from '@/types/endpoint';
+import getMethodColor from '@/lib/getMethodColor';
 
 export type EndpointItemProps = {
   endpoint: Endpoint;
@@ -6,8 +7,13 @@ export type EndpointItemProps = {
 
 export default function EndpointItem({ endpoint }: EndpointItemProps) {
   return (
-    <li>
-      {endpoint.method.toUpperCase()} {endpoint.path}
+    <li className="p-4 flex gap-4">
+      <span
+        className={`inline-block w-12 rounde-md p-1 text-sm uppercase border-l-2 ${getMethodColor(endpoint.method)}`}
+      >
+        {endpoint.method.toUpperCase()}
+      </span>{' '}
+      {endpoint.path}
     </li>
   );
 }

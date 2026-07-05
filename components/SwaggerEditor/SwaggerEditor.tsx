@@ -18,23 +18,7 @@ type SwaggerEditorProps = {
   schema: SwaggerSchema | null;
   onSchemaChange: (schema: SwaggerSchema | null) => void;
 };
-/*
-          summary: Get pets
-            responses:
-              "200":
-                description: OK
-        post:
-            summary: Create pet
-            responses:
-              "201":
-                description: Created
 
-        /users:
-          get:
-            summary: Get users
-            responses:
-              "201":
-                description: OK */
 export default function SwaggerEditor({
   schema,
   onSchemaChange,
@@ -48,8 +32,22 @@ export default function SwaggerEditor({
       paths:
         /pets:
           get:
+            summary: Get pets
+            responses:
+              "200":
+                description: OK
+          post:
+              summary: Create pet
+              responses:
+                "201":
+                  description: Created
 
-
+        /users:
+          get:
+            summary: Get users
+            responses:
+              "201":
+                description: OK
     `,
   );
   const [format, setFormat] = useState<Format>('yaml');
