@@ -33,9 +33,14 @@ export default function SwaggerEditor({
         /pets:
           get:
             summary: Get pets
+            description: Returns all pets
             responses:
               "200":
                 description: OK
+            parameters: [
+              name: limit
+              in: query
+            ]
           post:
               summary: Create pet
               responses:

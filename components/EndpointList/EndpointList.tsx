@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../ui/accordion';
+import EndpointDetails from '@/components/EndpointDetails/EndpointDetails';
 
 export type EndpointListProps = {
   endpoints: Endpoint[];
@@ -23,7 +24,7 @@ export default function EndpointList({ endpoints }: EndpointListProps) {
             <EndpointItem endpoint={endpoint} />
           </AccordionTrigger>
           <AccordionContent className="px-4">
-            Endpoit details...
+            <EndpointDetails operation={endpoint.operation} />
           </AccordionContent>
         </AccordionItem>
       ))}

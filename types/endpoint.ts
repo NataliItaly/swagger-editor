@@ -1,11 +1,15 @@
-export interface Endpoint {
-  path: string;
-  method: HttpMethod;
+export type Operation = {
   summary?: string;
   description?: string;
   parameters?: unknown[];
   requestBody?: unknown;
   responses?: unknown;
+};
+
+export interface Endpoint {
+  path: string;
+  method: HttpMethod;
+  operation: Operation;
 }
 
 export const HTTP_METHODS = [

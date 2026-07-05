@@ -1,5 +1,5 @@
 import type { SwaggerSchema } from '@/types/swagger';
-import type { Endpoint, HttpMethod } from '@/types/endpoint';
+import type { Endpoint, HttpMethod, Operation } from '@/types/endpoint';
 import { HTTP_METHODS } from '@/types/endpoint';
 
 export default function getEndpoints(schema: SwaggerSchema): Endpoint[] {
@@ -16,6 +16,7 @@ export default function getEndpoints(schema: SwaggerSchema): Endpoint[] {
       endpointArr.push({
         path: path,
         method: method as HttpMethod,
+        operation: operations[method] as Operation,
       });
     }
   }
