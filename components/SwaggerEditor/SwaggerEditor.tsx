@@ -16,7 +16,23 @@ type SwaggerEditorProps = {
   schema: SwaggerSchema | null;
   onSchemaChange: (schema: SwaggerSchema | null) => void;
 };
+/*
+          summary: Get pets
+            responses:
+              "200":
+                description: OK
+        post:
+            summary: Create pet
+            responses:
+              "201":
+                description: Created
 
+        /users:
+          get:
+            summary: Get users
+            responses:
+              "201":
+                description: OK */
 export default function SwaggerEditor({
   schema,
   onSchemaChange,
@@ -30,22 +46,8 @@ export default function SwaggerEditor({
       paths:
         /pets:
           get:
-            summary: Get pets
-            responses:
-              "200":
-                description: OK
-          post:
-            summary: Create pet
-            responses:
-              "201":
-                description: Created
 
-        /users:
-          get:
-            summary: Get users
-            responses:
-              "201":
-                description: OK
+
     `,
   );
   const [format, setFormat] = useState<Format>('yaml');
@@ -78,20 +80,28 @@ export default function SwaggerEditor({
       const format = detectFormat(editorValue);
       setFormat(format);
 
+      let parsed: SwaggerSchema;
+
       try {
-        const parsed = parseSchema(editorValue, format);
-
-        await validateSchema(parsed as SwaggerSchema);
-        onSchemaChange(parsed as SwaggerSchema);
-        setValidationError(null);
-
-        console.log(parsed);
-        console.log('VALID');
+        parsed = parseSchema(editorValue, format);
       } catch (e) {
         onSchemaChange(null);
         if (e instanceof Error) {
           setValidationError(e.message);
           console.log(e.message);
+        }
+
+        return;
+      }
+      onSchemaChange(parsed);
+
+      try {
+        await validateSchema(parsed);
+        setValidationError(null);
+        console.log('VALID');
+      } catch (e) {
+        if (e instanceof Error) {
+          setValidationError(e.message);
         }
       }
     }, VALIDATION_DELAY);

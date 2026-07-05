@@ -32,7 +32,6 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
           ))}
         </ul>
       )}
-      <pre>{JSON.stringify(schema.paths ?? {}, null, 2)}</pre>
     </div>
   );
 }
