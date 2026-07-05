@@ -1,6 +1,7 @@
 import type { SwaggerSchema } from '@/types/swagger';
 import type { Endpoint } from '@/types/endpoint';
 import getEndpoints from '@/lib/getEndpoints';
+import EndpointList from '../EndpointList/EndpointList';
 
 export type SwaggerViewerProps = {
   schema: SwaggerSchema | null;
@@ -24,13 +25,7 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
       {endpoints.length === 0 ? (
         <p>No endpoints</p>
       ) : (
-        <ul>
-          {endpoints.map((endpoint) => (
-            <li key={`${endpoint.method}-${endpoint.path}`}>
-              {endpoint.method.toUpperCase()} {endpoint.path}
-            </li>
-          ))}
-        </ul>
+        <EndpointList endpoints={endpoints} />
       )}
     </div>
   );
