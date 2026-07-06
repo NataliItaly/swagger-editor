@@ -3,14 +3,8 @@ export type Operation = {
   description?: string;
   parameters?: Parameter[];
   requestBody?: unknown;
-  responses?: unknown;
+  responses?: Responses;
 };
-
-export interface Endpoint {
-  path: string;
-  method: HttpMethod;
-  operation: Operation;
-}
 
 export interface Parameter {
   name: string;
@@ -20,6 +14,16 @@ export interface Parameter {
   schema?: {
     type?: string;
   };
+}
+
+export interface Responses {
+  description: string;
+}
+
+export interface Endpoint {
+  path: string;
+  method: HttpMethod;
+  operation: Operation;
 }
 
 export const HTTP_METHODS = [

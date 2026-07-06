@@ -37,6 +37,10 @@ export default function SwaggerEditor({
             responses:
               "200":
                 description: OK
+                content:
+                  application/json:
+                    schema:
+                      type: array
             parameters:
               - name: limit
                 in: query
@@ -54,7 +58,7 @@ export default function SwaggerEditor({
           get:
             summary: Get users
             responses:
-              "201":
+              "505":
                 description: OK
     `,
   );
