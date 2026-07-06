@@ -1,18 +1,17 @@
-import type { Operation } from '@/types/endpoint';
-import { getStatusColor } from '@/lib/getStausColor';
+import type { Responses } from '@/types/endpoint';
 import ResponseItem from '../ResponseItem/ResponseItem';
 
 export type OperationResponsesProps = {
-  operation: Operation;
+  operationResponses: Responses;
 };
 
 export default function OperationResponses({
-  operation,
+  operationResponses,
 }: OperationResponsesProps) {
   return (
     <section className="px-4 py-2 fles flex-col gap-4">
       <h3 className="font-semibold">Responses:</h3>
-      {Object.entries(operation.responses ?? {}).map(([status, response]) => (
+      {Object.entries(operationResponses ?? {}).map(([status, response]) => (
         <ResponseItem key={status} status={status} response={response} />
       ))}
     </section>

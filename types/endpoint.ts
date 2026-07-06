@@ -2,7 +2,7 @@ export type Operation = {
   summary?: string;
   description?: string;
   parameters?: Parameter[];
-  requestBody?: unknown;
+  requestBody?: RequestBody;
   responses?: Responses;
 };
 
@@ -16,11 +16,23 @@ export interface Parameter {
   };
 }
 
-export interface MediaType {
-  schema?: {
-    type?: string;
-  };
+export interface SchemaObject {
+  type?: string;
+  format?: string;
+  properties?: Record<string, SchemaObject>;
+  items?: SchemaObject;
   example?: unknown;
+}
+
+export interface MediaType {
+  schema?: SchemaObject;
+  example?: Record<string, unknown>;
+}
+
+export interface RequestBody {
+  description?: string;
+  required?: boolean;
+  content?: Record<string, MediaType>;
 }
 
 export interface Response {

@@ -1,18 +1,15 @@
-import type { Operation } from '@/types/endpoint';
-
-export type { Operation } from '@/types/endpoint';
+import type { Parameter } from '@/types/endpoint';
 
 export type ParameterListProps = {
-  operation: Operation;
+  parameterList: Parameter[];
 };
 
-export default function ParameterList({ operation }: ParameterListProps) {
-  if (!operation.parameters) return null;
+export default function ParameterList({ parameterList }: ParameterListProps) {
   return (
     <section className="px-4 py-2 flex gap-4">
       <h3 className="font-semibold">ParameterList:</h3>
       <ul className="space-y-2">
-        {operation.parameters.map((param) => (
+        {parameterList.map((param) => (
           <li key={`${param.in}-${param.name}`} className="rounded border p-2">
             <div className="flex gap-2 items-center">
               <span className="font-medium">{param.name}</span>
@@ -35,5 +32,3 @@ export default function ParameterList({ operation }: ParameterListProps) {
     </section>
   );
 }
-
-//{JSON.stringify(operation.parameters, null, 2)}

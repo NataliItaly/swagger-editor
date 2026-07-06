@@ -34,6 +34,18 @@ export default function SwaggerEditor({
           get:
             summary: Get pets
             description: Returns all pets
+            requestBody:
+              description: New pet
+              required: true
+
+              content:
+                application/json:
+                  schema:
+                    type: object
+
+                  example:
+                    name: Cat
+                    age: 2
             responses:
               "200":
                 description: OK

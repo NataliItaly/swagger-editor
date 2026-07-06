@@ -3,6 +3,7 @@ import OperationSummary from '../OperationSummary/OperationSummary';
 import OperationDescription from '../OperationDescription/OperationDescription';
 import ParameterList from '../ParameterList/ParameterList';
 import OperationResponses from '../OperationResponses/OperationResponses';
+import RequestBody from '../RequestBody/RequestBody';
 
 export type EndpointDetailsProps = {
   operation: Operation;
@@ -11,20 +12,20 @@ export type EndpointDetailsProps = {
 export default function EndpointDetails({ operation }: EndpointDetailsProps) {
   return (
     <div>
-      <div>
-        {operation.summary && <OperationSummary operation={operation} />}
-      </div>
-      <div>
-        {operation.description && (
-          <OperationDescription operation={operation} />
-        )}
-      </div>
-      <div>
-        {operation.parameters && <ParameterList operation={operation} />}
-      </div>
-      <div>
-        {operation.responses && <OperationResponses operation={operation} />}
-      </div>
+      {operation.summary && <OperationSummary summary={operation.summary} />}
+      {operation.description && (
+        <OperationDescription description={operation.description} />
+      )}
+
+      {operation.requestBody && (
+        <RequestBody requestBody={operation.requestBody} />
+      )}
+      {operation.parameters && (
+        <ParameterList parameterList={operation.parameters} />
+      )}
+      {operation.responses && (
+        <OperationResponses operationResponses={operation.responses} />
+      )}
     </div>
   );
 }

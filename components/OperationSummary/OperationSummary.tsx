@@ -1,14 +1,12 @@
-import type { Operation } from '@/types/endpoint';
-
 export type OperationSummaryProps = {
-  operation: Operation;
+  summary: string;
 };
 
-export default function OperationSummary({ operation }: OperationSummaryProps) {
+export default function OperationSummary({ summary }: OperationSummaryProps) {
   return (
     <section className="px-4 py-2 flex gap-4">
       <h3 className="font-semibold">Summary:</h3>
-      <p>{operation.summary}</p>
+      <p>{summary}</p>
     </section>
   );
 }
