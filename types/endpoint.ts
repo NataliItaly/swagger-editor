@@ -16,9 +16,19 @@ export interface Parameter {
   };
 }
 
-export interface Responses {
-  description: string;
+export interface MediaType {
+  schema?: {
+    type?: string;
+  };
+  example?: unknown;
 }
+
+export interface Response {
+  description?: string;
+  content?: Record<string, MediaType>;
+}
+
+export type Responses = Record<string, Response>;
 
 export interface Endpoint {
   path: string;
