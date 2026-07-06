@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import SwaggerEditor from '@/components/SwaggerEditor/SwaggerEditor';
-import SwaggerViewer from '@/components/SwaggerViewer/SwaggerViewer';
+import SwaggerEditor from '@/components/SwaggerWorkspace/SwaggerEditor/SwaggerEditor';
+import SwaggerViewer from '@/components/SwaggerWorkspace/SwaggerViewer/SwaggerViewer';
 import type { SwaggerSchema } from '@/types/swagger';
 
 export default function SwaggerWorkspace() {

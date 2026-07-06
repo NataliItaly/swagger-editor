@@ -1,7 +1,7 @@
 import type { SwaggerSchema } from '@/types/swagger';
 import type { Endpoint } from '@/types/endpoint';
 import getEndpoints from '@/lib/getEndpoints';
-import EndpointList from '../EndpointList/EndpointList';
+import EndpointList from './Endpoint/EndpointList/EndpointList';
 
 export type SwaggerViewerProps = {
   schema: SwaggerSchema | null;
