@@ -60,6 +60,23 @@ export default function SwaggerEditor({
                 description: Maximum number of pets
                 schema:
                   type: integer
+              - name: offset
+                in: query
+                required: false
+                schema:
+                  type: integer
+
+              - name: apiKey
+                in: header
+                required: true
+                schema:
+                  type: string
+
+              - name: petId
+                in: path
+                required: true
+                schema:
+                  type: integer
           post:
               summary: Create pet
               responses:
