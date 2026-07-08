@@ -137,7 +137,7 @@ export default function SwaggerEditor({
   }, [editorValue]);
 
   return (
-    <div>
+    <div className="flex-1 lg:flex-1/2 lg:max-w-1/2">
       <Toolbar
         format={format}
         onConvertToJSON={switchToJSON}
@@ -145,7 +145,7 @@ export default function SwaggerEditor({
         onSave={handleSave}
       />
       <Editor
-        className="h-40 mb-5"
+        className="h-64 mb-5"
         language={format}
         value={editorValue}
         onChange={handleChange}
