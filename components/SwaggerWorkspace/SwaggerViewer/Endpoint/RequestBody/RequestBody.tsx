@@ -2,9 +2,15 @@ import type { RequestBody } from '@/types/endpoint';
 
 export type RequestBodyProps = {
   requestBody: RequestBody;
+  bodyValue: string;
+  onBodyChange: (value: string) => void;
 };
 
-export default function RequestBody({ requestBody }: RequestBodyProps) {
+export default function RequestBody({
+  requestBody,
+  bodyValue,
+  onBodyChange,
+}: RequestBodyProps) {
   return (
     <section className="px-4 py-2 flex flex-col gap-4">
       <h3 className="font-semibold">Request Body:</h3>
@@ -42,8 +48,11 @@ export default function RequestBody({ requestBody }: RequestBodyProps) {
                   {media.example && (
                     <div className="pl-4">
                       <h5 className="font-medium">Example</h5>
-
-                      <pre>{JSON.stringify(media.example, null, 2)}</pre>
+                      <textarea
+                        value={bodyValue}
+                        onChange={(e) => onBodyChange(e.target.value)}
+                        className="w-full rounded border p-2 font-mono"
+                      />
                     </div>
                   )}
                 </div>
@@ -56,5 +65,5 @@ export default function RequestBody({ requestBody }: RequestBodyProps) {
   );
 }
 /**
- *
+ *<pre>{JSON.stringify(media.example, null, 2)}</pre>
  */

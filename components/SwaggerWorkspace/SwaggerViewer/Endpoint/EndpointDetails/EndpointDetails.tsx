@@ -4,16 +4,22 @@ import OperationDescription from '../OperationDescription/OperationDescription';
 import ParameterList from '../ParameterList/ParameterList';
 import OperationResponses from '../OperationResponses/OperationResponses';
 import RequestBody from '../RequestBody/RequestBody';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export type EndpointDetailsProps = {
   operation: Operation;
 };
 
 export default function EndpointDetails({ operation }: EndpointDetailsProps) {
-  const [parameterValues, setParameterValues] = useState<
-    Record<string, string>
-  >({});
+  const [requestState, setRequestState] = useState({
+    parameters: {},
+    headers: {},
+    body: JSON.stringify(
+      Object.values(operation.requestBody?.content ?? {})[0]?.example ?? {},
+      null,
+      2,
+    ),
+  });
 
   return (
     <div>
@@ -23,16 +29,22 @@ export default function EndpointDetails({ operation }: EndpointDetailsProps) {
       )}
 
       {operation.requestBody && (
-        <RequestBody requestBody={operation.requestBody} />
+        <RequestBody
+          requestBody={operation.requestBody}
+          bodyValue={requestState.body}
+          onBodyChange={(value) =>
+            setRequestState((prev) => ({ ...prev, body: value }))
+          }
+        />
       )}
       {operation.parameters && (
         <ParameterList
           parameterList={operation.parameters}
-          parameterValues={parameterValues}
+          parameterValues={requestState.parameters}
           onParameterChange={(key, value) =>
-            setParameterValues((prev) => ({
+            setRequestState((prev) => ({
               ...prev,
-              [key]: value,
+              parameters: { ...prev.parameters, [key]: value },
             }))
           }
         />
@@ -43,3 +55,9 @@ export default function EndpointDetails({ operation }: EndpointDetailsProps) {
     </div>
   );
 }
+/**
+ *  setParameterValues((prev) => ({
+              ...prev,
+              [key]: value,
+            }))
+ */
