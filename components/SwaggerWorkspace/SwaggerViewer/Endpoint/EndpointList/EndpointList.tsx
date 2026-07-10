@@ -32,9 +32,7 @@ export default function EndpointList({ endpoints }: EndpointListProps) {
               <EndpointItem endpoint={endpoint} />
             </AccordionTrigger>
             <AccordionContent className="px-4">
-              {opened === value && (
-                <EndpointDetails operation={endpoint.operation} />
-              )}
+              {opened === value && <EndpointDetails endpoint={endpoint} />}
             </AccordionContent>
           </AccordionItem>
         );

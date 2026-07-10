@@ -1,17 +1,16 @@
-import type { Operation } from '@/types/endpoint';
+import type { Endpoint } from '@/types/endpoint';
 import OperationSummary from '../OperationSummary/OperationSummary';
 import OperationDescription from '../OperationDescription/OperationDescription';
-import ParameterList from '../ParameterList/ParameterList';
 import OperationResponses from '../OperationResponses/OperationResponses';
-import RequestBody from '../RequestBody/RequestBody';
 import TryItOut from '../TryItOut/TryItOut';
-import { useState, useEffect } from 'react';
 
 export type EndpointDetailsProps = {
-  operation: Operation;
+  endpoint: Endpoint;
 };
 
-export default function EndpointDetails({ operation }: EndpointDetailsProps) {
+export default function EndpointDetails({ endpoint }: EndpointDetailsProps) {
+  const { operation } = endpoint;
+
   return (
     <div>
       {operation.summary && <OperationSummary summary={operation.summary} />}
@@ -24,16 +23,7 @@ export default function EndpointDetails({ operation }: EndpointDetailsProps) {
         <OperationResponses operationResponses={operation.responses} />
       )}
 
-      <TryItOut operation={operation} />
+      <TryItOut endpoint={endpoint} />
     </div>
   );
 }
-
-/**
- *  {operation.requestBody && (
-        <RequestBody requestBody={operation.requestBody} />
-      )}
-      {operation.parameters && (
-        <ParameterList parameterList={operation.parameters} />
-      )}
- */
