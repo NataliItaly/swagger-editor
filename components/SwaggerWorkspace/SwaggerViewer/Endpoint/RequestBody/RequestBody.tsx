@@ -2,8 +2,8 @@ import type { RequestBody } from '@/types/endpoint';
 
 export type RequestBodyProps = {
   requestBody: RequestBody;
-  bodyValue: string;
-  onBodyChange: (value: string) => void;
+  bodyValue?: string;
+  onBodyChange?: (value: string) => void;
 };
 
 export default function RequestBody({
@@ -48,11 +48,13 @@ export default function RequestBody({
                   {media.example && (
                     <div className="pl-4">
                       <h5 className="font-medium">Example</h5>
-                      <textarea
-                        value={bodyValue}
-                        onChange={(e) => onBodyChange(e.target.value)}
-                        className="w-full rounded border p-2 font-mono"
-                      />
+                      {onBodyChange && (
+                        <textarea
+                          value={bodyValue}
+                          onChange={(e) => onBodyChange(e.target.value)}
+                          className="w-full rounded border p-2 font-mono"
+                        />
+                      )}
                     </div>
                   )}
                 </div>
