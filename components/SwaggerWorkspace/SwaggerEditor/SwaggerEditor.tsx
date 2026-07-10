@@ -30,7 +30,7 @@ export default function SwaggerEditor({
         title: My API
         version: 1.0.0
       paths:
-        /pets:
+        /pets{petId}:
           get:
             summary: Get pets
             description: Returns all pets
@@ -83,7 +83,7 @@ export default function SwaggerEditor({
                 "201":
                   description: Created
 
-        /users:
+        /users/{userId}:
           get:
             summary: Get users
             responses:
