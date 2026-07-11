@@ -3,10 +3,18 @@ import type { Endpoint } from '@/types/endpoint';
 import ParameterList from '../ParameterList/ParameterList';
 import RequestBody from '../RequestBody/RequestBody';
 import { Button } from '@/components/ui/button';
-import buildUrl from '@/lib/buildUrl';
+import buildRequestData from '@/lib/buildRequestData';
+import isValidJson from '@/lib/isValidJson';
 
 export type TryItOutProps = {
   endpoint: Endpoint;
+};
+
+type ProxyResponse = {
+  status: number;
+  headers: Record<string, string>;
+  body: string;
+  error?: string;
 };
 
 export default function TryItOut({ endpoint }: TryItOutProps) {
@@ -28,29 +36,54 @@ export default function TryItOut({ endpoint }: TryItOutProps) {
   } | null>(null);
 
   async function handleExecute() {
-    const { url, headers } = buildUrl(path, requestState.parameters);
-    console.log(url);
+    const { url, headers } = buildRequestData(path, requestState.parameters);
 
     try {
       const hasBody = !['get', 'delete', 'head'].includes(method);
 
-      const res = await fetch(url, {
-        method: method.toUpperCase(),
-        headers: headers,
-        body: hasBody && {
+      if (hasBody && !isValidJson(requestState.body)) {
+        setResponse({
+          status: 0,
+          headers: {},
+          body: 'Request body contains invalid JSON',
+        });
+
+        return;
+      }
+
+      const requestHeaders = {
+        ...headers,
+        ...(hasBody && {
           'Content-Type': 'application/json',
-        }
-          ? requestState.body
-          : undefined,
+        }),
+      };
+
+      const res = await fetch('/api/proxy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url,
+          method: method.toUpperCase(),
+          headers: requestHeaders,
+          body: hasBody ? requestState.body : undefined,
+        }),
       });
 
-      const body = await res.text();
+      const result = await res.json();
 
-      setResponse({
-        status: res.status,
-        headers: Object.fromEntries(res.headers.entries()),
-        body,
-      });
+      if (!res.ok) {
+        setResponse({
+          status: result.status ?? res.status,
+          headers: {},
+          body: result.error,
+        });
+
+        return;
+      }
+
+      setResponse(result);
     } catch (err) {
       console.error(err);
       setResponse({

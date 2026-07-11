@@ -1,4 +1,4 @@
-export default function buildUrl(
+export default function buildRequestData(
   path: string,
   parameters: Record<string, string>,
 ) {
