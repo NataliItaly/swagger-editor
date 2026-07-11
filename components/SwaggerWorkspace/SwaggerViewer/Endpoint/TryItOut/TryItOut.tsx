@@ -9,6 +9,7 @@ import buildRequestData from '@/lib/buildRequestData';
 import isValidJson from '@/lib/isValidJson';
 import executeRequest from '@/lib/executeRequest';
 import validateRequestParameters from '@/lib/validateRequestParameters';
+import buildCurlCommand from '@/lib/buildCurlCommand';
 
 export type TryItOutProps = {
   endpoint: Endpoint;
@@ -30,6 +31,8 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
   });
 
   const [response, setResponse] = useState<ProxyResponse | null>(null);
+
+  const [curlCommand, setCurlCommand] = useState('');
 
   async function handleExecute() {
     setResponse(null);
@@ -89,6 +92,25 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
     }
   }
 
+  function handleGenerateCurl() {
+    const { url, headers } = buildRequestData(
+      serverUrl,
+      path,
+      requestState.parameters,
+    );
+
+    const hasBody = !['get', 'delete', 'head'].includes(method);
+
+    const curl = buildCurlCommand({
+      url,
+      method,
+      headers,
+      body: hasBody ? requestState.body : undefined,
+    });
+
+    setCurlCommand(curl);
+  }
+
   return (
     <>
       {operation.parameters && (
@@ -114,16 +136,42 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
         />
       )}
 
-      <Button
-        className="px-5 py-3 m-4 border-gray-500 cursor-pointer"
-        variant="default"
-        onClick={handleExecute}
-        disabled={loading}
-      >
-        {loading ? 'Executing...' : 'Execute'}
-      </Button>
+      <div>
+        <Button
+          className="px-5 py-3 m-4 border-gray-500 cursor-pointer"
+          variant="default"
+          onClick={handleExecute}
+          disabled={loading}
+        >
+          {loading ? 'Executing...' : 'Execute'}
+        </Button>
+
+        <Button
+          variant="secondary"
+          className="px-5 py-3 m-4 border-gray-500 cursor-pointer"
+          onClick={handleGenerateCurl}
+        >
+          Generate cURL
+        </Button>
+      </div>
 
       <ResponseViewer response={response} />
+
+      {curlCommand && (
+        <div className="mx-4">
+          <pre className="overflow-x-auto rounded bg-gray-200 p-3 text-sm">
+            {curlCommand}
+          </pre>
+
+          <Button
+            variant="destructive"
+            className="mx-4 cursor-pointer"
+            onClick={() => navigator.clipboard.writeText(curlCommand)}
+          >
+            Copy
+          </Button>
+        </div>
+      )}
     </>
   );
 }

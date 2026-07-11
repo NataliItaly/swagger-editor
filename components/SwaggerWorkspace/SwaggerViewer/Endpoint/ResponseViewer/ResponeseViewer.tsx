@@ -25,7 +25,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
         : 'text-yellow-600';
 
   return (
-    <section className="mt-6 mx-4 rounded border p-4">
+    <section className="mt-6 mx-4 mb-5 rounded border p-4 bg-gray-200">
       <h3 className="font-semibold text-lg">Response</h3>
 
       <div className="mt-3">
