@@ -85,5 +85,3 @@ function AccordionContent({
 }
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
-
-//h-(--radix-accordion-content-height)

@@ -66,6 +66,3 @@ export default function RequestBody({
     </section>
   );
 }
-/**
- *<pre>{JSON.stringify(media.example, null, 2)}</pre>
- */

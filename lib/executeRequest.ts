@@ -33,7 +33,6 @@ export default async function executeRequest({
     }),
   });
 
-  //const result: ProxyResponse = await res.json();
   const text = await res.text();
 
   const result: ProxyResponse = JSON.parse(text);
