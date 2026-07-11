@@ -11,9 +11,10 @@ import executeRequest from '@/lib/executeRequest';
 
 export type TryItOutProps = {
   endpoint: Endpoint;
+  serverUrl: string;
 };
 
-export default function TryItOut({ endpoint }: TryItOutProps) {
+export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
   const { operation, method, path } = endpoint;
 
   const [requestState, setRequestState] = useState({
@@ -28,7 +29,12 @@ export default function TryItOut({ endpoint }: TryItOutProps) {
   const [response, setResponse] = useState<ProxyResponse | null>(null);
 
   async function handleExecute() {
-    const { url, headers } = buildRequestData(path, requestState.parameters);
+    console.log('requestState', requestState);
+    const { url, headers } = buildRequestData(
+      serverUrl,
+      path,
+      requestState.parameters,
+    );
 
     const hasBody = !['get', 'delete', 'head'].includes(method);
 
@@ -48,7 +54,7 @@ export default function TryItOut({ endpoint }: TryItOutProps) {
         headers,
         body: hasBody ? requestState.body : undefined,
       });
-
+      console.log('HANDLE RESULT', result);
       setResponse(result);
     } catch (err) {
       console.error(err);
@@ -66,12 +72,13 @@ export default function TryItOut({ endpoint }: TryItOutProps) {
         <ParameterList
           parameterList={operation.parameters}
           parameterValues={requestState.parameters}
-          onParameterChange={(key, value) =>
+          onParameterChange={(key, value) => {
+            console.log('TryItOut:', key, value);
             setRequestState((prev) => ({
               ...prev,
               parameters: { ...prev.parameters, [key]: value },
-            }))
-          }
+            }));
+          }}
         />
       )}
 

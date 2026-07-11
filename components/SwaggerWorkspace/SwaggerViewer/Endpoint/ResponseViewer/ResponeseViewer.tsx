@@ -16,7 +16,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
   })();
 
   return (
-    <section className="mt-6 rounded border p-4">
+    <section className="mt-6 rounded border p-4 bg-yellow-400">
       <h3 className="font-semibold text-lg">Response</h3>
 
       <div className="mt-3">

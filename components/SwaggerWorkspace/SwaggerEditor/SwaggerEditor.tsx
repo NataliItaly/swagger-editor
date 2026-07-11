@@ -26,57 +26,24 @@ export default function SwaggerEditor({
   const [editorValue, setEditorValue] = useState(
     `
       openapi: 3.0.0
+      servers:
+        - url: https://petstore.swagger.io/v2
       info:
         title: My API
         version: 1.0.0
       paths:
-        /pets{petId}:
+        /pet/{petId}:
           get:
-            summary: Get pets
-            description: Returns all pets
-            requestBody:
-              description: New pet
-              required: true
-
-              content:
-                application/json:
-                  schema:
-                    type: object
-
-                  example:
-                    name: Cat
-                    age: 2
-            responses:
-              "200":
-                description: OK
-                content:
-                  application/json:
-                    schema:
-                      type: array
             parameters:
-              - name: limit
-                in: query
-                required: false
-                description: Maximum number of pets
-                schema:
-                  type: integer
-              - name: offset
-                in: query
-                required: false
-                schema:
-                  type: integer
-
-              - name: apiKey
-                in: header
-                required: true
-                schema:
-                  type: string
-
               - name: petId
                 in: path
                 required: true
                 schema:
                   type: integer
+
+            responses:
+              "200":
+                description: OK
           post:
               summary: Create pet
               responses:
@@ -171,3 +138,50 @@ export default function SwaggerEditor({
     </div>
   );
 }
+/**
+ * summary: Get pets
+            description: Returns all pets
+            requestBody:
+              description: New pet
+              required: true
+
+              content:
+                application/json:
+                  schema:
+                    type: object
+
+                  example:
+                    name: Cat
+                    age: 2
+            responses:
+              "200":
+                description: OK
+                content:
+                  application/json:
+                    schema:
+                      type: array
+            parameters:
+              - name: limit
+                in: query
+                required: false
+                description: Maximum number of pets
+                schema:
+                  type: integer
+              - name: offset
+                in: query
+                required: false
+                schema:
+                  type: integer
+
+              - name: apiKey
+                in: header
+                required: true
+                schema:
+                  type: string
+
+              - name: petId
+                in: path
+                required: true
+                schema:
+                  type: integer
+ */

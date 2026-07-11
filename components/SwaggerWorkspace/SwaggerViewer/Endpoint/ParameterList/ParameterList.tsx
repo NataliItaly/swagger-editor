@@ -24,7 +24,11 @@ export default function ParameterList({
               key={`${param.in}-${param.name}`}
               param={param}
               value={parameterValues[key] ?? ''}
-              onChange={(value) => onParameterChange(key, value)}
+              onChange={(value) => {
+                console.log('ParameterList:', key, value);
+
+                onParameterChange(key, value);
+              }}
             />
           );
         })}

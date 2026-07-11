@@ -6,9 +6,13 @@ import TryItOut from '../TryItOut/TryItOut';
 
 export type EndpointDetailsProps = {
   endpoint: Endpoint;
+  serverUrl: string;
 };
 
-export default function EndpointDetails({ endpoint }: EndpointDetailsProps) {
+export default function EndpointDetails({
+  endpoint,
+  serverUrl,
+}: EndpointDetailsProps) {
   const { operation } = endpoint;
 
   return (
@@ -23,7 +27,7 @@ export default function EndpointDetails({ endpoint }: EndpointDetailsProps) {
         <OperationResponses operationResponses={operation.responses} />
       )}
 
-      <TryItOut endpoint={endpoint} />
+      <TryItOut endpoint={endpoint} serverUrl={serverUrl} />
     </div>
   );
 }

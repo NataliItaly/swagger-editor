@@ -11,11 +11,15 @@ import { useState } from 'react';
 
 export type EndpointListProps = {
   endpoints: Endpoint[];
+  serverUrl: string;
 };
 
-export default function EndpointList({ endpoints }: EndpointListProps) {
+export default function EndpointList({
+  endpoints,
+  serverUrl,
+}: EndpointListProps) {
   const [opened, setOpened] = useState('');
-
+  console.log(serverUrl);
   return (
     <Accordion
       type="single"
@@ -32,7 +36,9 @@ export default function EndpointList({ endpoints }: EndpointListProps) {
               <EndpointItem endpoint={endpoint} />
             </AccordionTrigger>
             <AccordionContent className="px-4">
-              {opened === value && <EndpointDetails endpoint={endpoint} />}
+              {opened === value && (
+                <EndpointDetails endpoint={endpoint} serverUrl={serverUrl} />
+              )}
             </AccordionContent>
           </AccordionItem>
         );

@@ -33,8 +33,12 @@ export default async function executeRequest({
     }),
   });
 
-  const result: ProxyResponse = await res.json();
+  //const result: ProxyResponse = await res.json();
+  const text = await res.text();
 
+  console.log('RAW RESPONSE:', text);
+
+  const result: ProxyResponse = JSON.parse(text);
   if (!res.ok) {
     throw new Error(result.error ?? 'Request failed');
   }

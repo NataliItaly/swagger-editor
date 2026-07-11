@@ -15,7 +15,7 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
       </div>
     );
   }
-
+  console.log(schema.servers);
   const endpoints: Endpoint[] = getEndpoints(schema);
 
   return (
@@ -23,7 +23,10 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
       {endpoints.length === 0 ? (
         <p>No endpoints</p>
       ) : (
-        <EndpointList endpoints={endpoints} />
+        <EndpointList
+          endpoints={endpoints}
+          serverUrl={schema.servers?.[0]?.url ?? ''}
+        />
       )}
     </div>
   );

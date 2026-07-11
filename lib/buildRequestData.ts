@@ -1,12 +1,17 @@
 export default function buildRequestData(
+  serverUrl: string,
   path: string,
   parameters: Record<string, string>,
 ) {
-  let url = path;
+  console.log('data in buildrequest', {
+    serverUrl,
+    path,
+  });
+  let url = `${serverUrl}${path}`;
 
   const query = new URLSearchParams();
   const headers: Record<string, string> = {};
-
+  console.log('parameters', parameters);
   Object.entries(parameters).forEach(([key, value]) => {
     const [location, name] = key.split(':');
 
@@ -28,6 +33,9 @@ export default function buildRequestData(
   if (queryString) {
     url += `?${queryString}`;
   }
-
+  console.log('buildRequestData result', {
+    url,
+    headers,
+  });
   return { url, headers };
 }
