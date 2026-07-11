@@ -15,15 +15,9 @@ export default function Toolbar({
   onSave,
 }: ToolbarProps) {
   return (
-    <div className="mb-5">
-      {/* <button
-        style={{ background: format === 'json' ? 'blue' : 'gray' }}
-        onClick={onConvertToJSON}
-        disabled={format === 'json'}
-      >
-        Convert to JSON
-      </button> */}
+    <div className="mb-5 py-5">
       <Button
+        className="px-5 py-3 cursor-pointer"
         variant={format === 'json' ? 'default' : 'outline'}
         onClick={onConvertToJSON}
         disabled={format === 'json'}
@@ -31,23 +25,20 @@ export default function Toolbar({
         Convert to JSON
       </Button>
       <Button
+        className="px-5 py-3 cursor-pointer"
         variant={format === 'yaml' ? 'default' : 'outline'}
         onClick={onConvertToYAML}
         disabled={format === 'yaml'}
       >
         Convert to YAML
       </Button>
-      {/* <button
-        style={{ background: format === 'yaml' ? 'blue' : 'gray' }}
-        onClick={onConvertToYAML}
-        disabled={format === 'yaml'}
+      <Button
+        className="px-5 py-3 cursor-pointer"
+        variant="secondary"
+        onClick={onSave}
       >
-        Convert to YAML
-      </button> */}
-      <Button variant="secondary" onClick={onSave}>
         Save schema
       </Button>
-      {/* <button onClick={onSave}>Save Schema</button> */}
     </div>
   );
 }

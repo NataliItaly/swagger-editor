@@ -10,7 +10,7 @@ export type SwaggerViewerProps = {
 export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
   if (!schema) {
     return (
-      <div className="w-lg h-28 bg-indigo-500 p-4">
+      <div className="w-lg h-28 p-4">
         <p>No schema loaded.</p>
       </div>
     );
@@ -19,11 +19,14 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
   const endpoints: Endpoint[] = getEndpoints(schema);
 
   return (
-    <div className="w-lg h-fit h-28 p-2">
+    <div className="flex-1 lg:flex-1/2 lg:max-w-1/2 p-2 pt-12">
       {endpoints.length === 0 ? (
         <p>No endpoints</p>
       ) : (
-        <EndpointList endpoints={endpoints} />
+        <EndpointList
+          endpoints={endpoints}
+          serverUrl={schema.servers?.[0]?.url ?? ''}
+        />
       )}
     </div>
   );

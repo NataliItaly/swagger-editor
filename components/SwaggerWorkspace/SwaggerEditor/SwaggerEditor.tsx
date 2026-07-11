@@ -26,47 +26,31 @@ export default function SwaggerEditor({
   const [editorValue, setEditorValue] = useState(
     `
       openapi: 3.0.0
+      servers:
+        - url: https://petstore.swagger.io/v2
       info:
         title: My API
         version: 1.0.0
       paths:
-        /pets:
+        /pet/{petId}:
           get:
-            summary: Get pets
-            description: Returns all pets
-            requestBody:
-              description: New pet
-              required: true
+            parameters:
+              - name: petId
+                in: path
+                required: true
+                schema:
+                  type: integer
 
-              content:
-                application/json:
-                  schema:
-                    type: object
-
-                  example:
-                    name: Cat
-                    age: 2
             responses:
               "200":
                 description: OK
-                content:
-                  application/json:
-                    schema:
-                      type: array
-            parameters:
-              - name: limit
-                in: query
-                required: false
-                description: Maximum number of pets
-                schema:
-                  type: integer
           post:
               summary: Create pet
               responses:
                 "201":
                   description: Created
 
-        /users:
+        /users/{userId}:
           get:
             summary: Get users
             responses:
@@ -101,7 +85,6 @@ export default function SwaggerEditor({
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      console.log('Validating');
       const format = detectFormat(editorValue);
       setFormat(format);
 
@@ -113,7 +96,6 @@ export default function SwaggerEditor({
         onSchemaChange(null);
         if (e instanceof Error) {
           setValidationError(getValidationMessage(e));
-          console.log(e.message);
         }
 
         return;
@@ -123,7 +105,6 @@ export default function SwaggerEditor({
       try {
         await validateSchema(parsed);
         setValidationError(null);
-        console.log('VALID');
       } catch (e) {
         if (e instanceof Error) {
           setValidationError(getValidationMessage(e));
@@ -137,7 +118,7 @@ export default function SwaggerEditor({
   }, [editorValue]);
 
   return (
-    <div>
+    <div className="flex-1 lg:flex-1/2 lg:max-w-1/2">
       <Toolbar
         format={format}
         onConvertToJSON={switchToJSON}
@@ -145,7 +126,7 @@ export default function SwaggerEditor({
         onSave={handleSave}
       />
       <Editor
-        className="h-40 mb-5"
+        className="h-64 mb-5"
         language={format}
         value={editorValue}
         onChange={handleChange}
@@ -154,3 +135,50 @@ export default function SwaggerEditor({
     </div>
   );
 }
+/**
+ * summary: Get pets
+            description: Returns all pets
+            requestBody:
+              description: New pet
+              required: true
+
+              content:
+                application/json:
+                  schema:
+                    type: object
+
+                  example:
+                    name: Cat
+                    age: 2
+            responses:
+              "200":
+                description: OK
+                content:
+                  application/json:
+                    schema:
+                      type: array
+            parameters:
+              - name: limit
+                in: query
+                required: false
+                description: Maximum number of pets
+                schema:
+                  type: integer
+              - name: offset
+                in: query
+                required: false
+                schema:
+                  type: integer
+
+              - name: apiKey
+                in: header
+                required: true
+                schema:
+                  type: string
+
+              - name: petId
+                in: path
+                required: true
+                schema:
+                  type: integer
+ */
