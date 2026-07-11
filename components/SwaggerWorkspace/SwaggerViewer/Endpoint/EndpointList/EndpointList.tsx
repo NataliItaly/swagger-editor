@@ -31,7 +31,7 @@ export default function EndpointList({
         const value = `${endpoint.method}-${endpoint.path}`;
 
         return (
-          <AccordionItem key={value} value={value}>
+          <AccordionItem className="max-w-full" key={value} value={value}>
             <AccordionTrigger>
               <EndpointItem endpoint={endpoint} />
             </AccordionTrigger>

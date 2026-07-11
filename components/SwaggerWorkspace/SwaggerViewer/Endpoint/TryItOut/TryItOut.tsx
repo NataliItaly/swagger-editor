@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import buildRequestData from '@/lib/buildRequestData';
 import isValidJson from '@/lib/isValidJson';
 import executeRequest from '@/lib/executeRequest';
+import validateRequestParameters from '@/lib/validateRequestParameters';
 
 export type TryItOutProps = {
   endpoint: Endpoint;
@@ -16,6 +17,8 @@ export type TryItOutProps = {
 
 export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
   const { operation, method, path } = endpoint;
+
+  const [loading, setLoading] = useState(false);
 
   const [requestState, setRequestState] = useState({
     parameters: {},
@@ -30,6 +33,25 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
 
   async function handleExecute() {
     console.log('requestState', requestState);
+    setResponse(null);
+    setLoading(true);
+
+    const error = validateRequestParameters(
+      operation.parameters ?? [],
+      requestState.parameters,
+    );
+    if (error) {
+      setResponse({
+        status: 0,
+        headers: {},
+        body: error,
+      });
+
+      setLoading(false);
+
+      return;
+    }
+
     const { url, headers } = buildRequestData(
       serverUrl,
       path,
@@ -63,6 +85,8 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
         headers: {},
         body: err instanceof Error ? err.message : 'Unknown error',
       });
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -93,11 +117,12 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
       )}
 
       <Button
-        className="px-5 py-3 m-2 border-gray-500 cursor-pointer"
+        className="px-5 py-3 m-4 border-gray-500 cursor-pointer"
         variant="default"
         onClick={handleExecute}
+        disabled={loading}
       >
-        Execute
+        {loading ? 'Executing...' : 'Execute'}
       </Button>
 
       <ResponseViewer response={response} />

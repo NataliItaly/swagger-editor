@@ -7,6 +7,8 @@ export type ResponseViewerProps = {
 export default function ResponseViewer({ response }: ResponseViewerProps) {
   if (!response) return null;
 
+  const isError = response.status === 0 || response.status >= 400;
+
   const formattedBody = (() => {
     try {
       return JSON.stringify(JSON.parse(response.body), null, 2);
@@ -15,12 +17,20 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
     }
   })();
 
+  const statusColor =
+    response.status >= 200 && response.status < 300
+      ? 'text-green-600'
+      : response.status >= 400
+        ? 'text-red-600'
+        : 'text-yellow-600';
+
   return (
-    <section className="mt-6 rounded border p-4 bg-yellow-400">
+    <section className="mt-6 mx-4 rounded border p-4">
       <h3 className="font-semibold text-lg">Response</h3>
 
       <div className="mt-3">
-        <span className="font-medium">Status:</span> {response.status}
+        <span className="font-medium">Status:</span>{' '}
+        <span className={statusColor}>{response.status}</span>
       </div>
 
       <div className="mt-4">
@@ -34,7 +44,13 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
       <div className="mt-4">
         <h4 className="font-medium">Body</h4>
 
-        <pre className="mt-2 rounded bg-gray-100 dark:bg-gray-800 p-3 overflow-auto text-sm">
+        <pre
+          className={`mt-2 rounded p-3 overflow-auto text-sm ${
+            isError
+              ? 'bg-red-50 text-red-600 border border-red-200'
+              : 'bg-gray-100 dark:bg-gray-800'
+          }`}
+        >
           {formattedBody}
         </pre>
       </div>
