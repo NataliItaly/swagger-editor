@@ -15,7 +15,7 @@ export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
       </div>
     );
   }
-  console.log(schema.servers);
+
   const endpoints: Endpoint[] = getEndpoints(schema);
 
   return (

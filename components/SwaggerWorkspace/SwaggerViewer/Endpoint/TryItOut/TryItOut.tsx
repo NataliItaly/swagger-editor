@@ -32,7 +32,6 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
   const [response, setResponse] = useState<ProxyResponse | null>(null);
 
   async function handleExecute() {
-    console.log('requestState', requestState);
     setResponse(null);
     setLoading(true);
 
@@ -76,7 +75,7 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
         headers,
         body: hasBody ? requestState.body : undefined,
       });
-      console.log('HANDLE RESULT', result);
+
       setResponse(result);
     } catch (err) {
       console.error(err);
@@ -97,7 +96,6 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
           parameterList={operation.parameters}
           parameterValues={requestState.parameters}
           onParameterChange={(key, value) => {
-            console.log('TryItOut:', key, value);
             setRequestState((prev) => ({
               ...prev,
               parameters: { ...prev.parameters, [key]: value },

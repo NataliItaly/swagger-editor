@@ -85,7 +85,6 @@ export default function SwaggerEditor({
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      console.log('Validating');
       const format = detectFormat(editorValue);
       setFormat(format);
 
@@ -97,7 +96,6 @@ export default function SwaggerEditor({
         onSchemaChange(null);
         if (e instanceof Error) {
           setValidationError(getValidationMessage(e));
-          console.log(e.message);
         }
 
         return;
@@ -107,7 +105,6 @@ export default function SwaggerEditor({
       try {
         await validateSchema(parsed);
         setValidationError(null);
-        console.log('VALID');
       } catch (e) {
         if (e instanceof Error) {
           setValidationError(getValidationMessage(e));

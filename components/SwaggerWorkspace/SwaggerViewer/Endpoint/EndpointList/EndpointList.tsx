@@ -19,7 +19,7 @@ export default function EndpointList({
   serverUrl,
 }: EndpointListProps) {
   const [opened, setOpened] = useState('');
-  console.log(serverUrl);
+
   return (
     <Accordion
       type="single"
