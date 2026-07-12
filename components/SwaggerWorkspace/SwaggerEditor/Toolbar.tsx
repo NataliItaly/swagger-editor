@@ -1,4 +1,5 @@
 import type { Format } from '@/types/swagger';
+import type { SaveStatus } from '@/types/save';
 import { Button } from '@/components/ui/button';
 
 export type ToolbarProps = {
@@ -6,6 +7,7 @@ export type ToolbarProps = {
   onConvertToJSON: () => void;
   onConvertToYAML: () => void;
   onSave: () => void;
+  saveStatus: SaveStatus;
 };
 
 export default function Toolbar({
@@ -13,6 +15,7 @@ export default function Toolbar({
   onConvertToJSON,
   onConvertToYAML,
   onSave,
+  saveStatus,
 }: ToolbarProps) {
   return (
     <div className="mb-5 py-5">
@@ -36,8 +39,12 @@ export default function Toolbar({
         className="px-5 py-3 cursor-pointer"
         variant="secondary"
         onClick={onSave}
+        disabled={saveStatus === 'saving'}
       >
-        Save schema
+        {saveStatus === 'idle' && 'Save schema'}
+        {saveStatus === 'saving' && 'Saving...'}
+        {saveStatus === 'saved' && 'Saved ✓'}
+        {saveStatus === 'error' && 'Save failed'}
       </Button>
     </div>
   );

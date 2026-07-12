@@ -4,13 +4,14 @@ import Editor from '@monaco-editor/react';
 import * as yaml from 'js-yaml';
 import { useState, useEffect } from 'react';
 import type { Format, SwaggerSchema } from '@/types/swagger';
+import type { ValidationResult } from '@/lib/getValidationMessage';
+import type { SaveStatus } from '@/types/save';
 import parseSchema from '@/lib/parseSchema';
 import detectFormat from '@/lib/detectFormat';
 import validateSchema from '@/lib/validateSchema';
 import Toolbar from './Toolbar';
 import ValidationMessage from './ValidationMessage';
 import getValidationMessage from '@/lib/getValidationMessage';
-import type { ValidationResult } from '@/lib/getValidationMessage';
 
 const VALIDATION_DELAY = 1000;
 
@@ -59,8 +60,37 @@ export default function SwaggerEditor({
     `,
   );
   const [format, setFormat] = useState<Format>('yaml');
+
   const [validationError, setValidationError] =
     useState<ValidationResult | null>(null);
+
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadSchema() {
+      try {
+        const res = await fetch('/api/schema');
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (!cancelled && data.schema) {
+          setEditorValue(data.schema);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    void loadSchema();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function handleChange(value: string | undefined) {
     const text = value ?? '';
@@ -79,8 +109,39 @@ export default function SwaggerEditor({
     setFormat('yaml');
   }
 
-  function handleSave() {
+  async function handleSave() {
     console.log('Save schema', schema);
+    try {
+      setSaveStatus('saving');
+
+      const res = await fetch('/api/schema', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          schema: editorValue,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to save schema');
+      }
+
+      setSaveStatus('saved');
+
+      alert('Schema saved');
+
+      setTimeout(() => {
+        setSaveStatus('idle');
+      }, 2000);
+    } catch (err) {
+      setSaveStatus('error');
+      alert(err instanceof Error ? err.message : 'Unknown error');
+      setTimeout(() => {
+        setSaveStatus('idle');
+      }, 3000);
+    }
   }
 
   useEffect(() => {
@@ -124,6 +185,7 @@ export default function SwaggerEditor({
         onConvertToJSON={switchToJSON}
         onConvertToYAML={switchToYAML}
         onSave={handleSave}
+        saveStatus={saveStatus}
       />
       <Editor
         className="h-64 mb-5"

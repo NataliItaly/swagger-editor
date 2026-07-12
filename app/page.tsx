@@ -19,7 +19,10 @@ export default function HomePage() {
         </Link>
       </div>
       <div className="flex justify-center mt-5">
-        <Link className="py-4 px-7" href="/swagger">
+        <Link
+          className="py-4 px-7 border rounded-xl border-gray-300 cursor-pointer"
+          href="/swagger"
+        >
           Try Swagger
         </Link>
       </div>
