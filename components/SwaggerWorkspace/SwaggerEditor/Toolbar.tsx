@@ -1,4 +1,5 @@
 import type { Format } from '@/types/swagger';
+import type { SaveStatus } from '@/types/save';
 import { Button } from '@/components/ui/button';
 
 export type ToolbarProps = {
@@ -6,7 +7,7 @@ export type ToolbarProps = {
   onConvertToJSON: () => void;
   onConvertToYAML: () => void;
   onSave: () => void;
-  saveStatus: 'idle' | 'saving' | 'saved' | 'error';
+  saveStatus: SaveStatus;
 };
 
 export default function Toolbar({

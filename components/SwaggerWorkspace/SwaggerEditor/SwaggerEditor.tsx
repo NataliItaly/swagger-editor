@@ -4,13 +4,14 @@ import Editor from '@monaco-editor/react';
 import * as yaml from 'js-yaml';
 import { useState, useEffect } from 'react';
 import type { Format, SwaggerSchema } from '@/types/swagger';
+import type { ValidationResult } from '@/lib/getValidationMessage';
+import type { SaveStatus } from '@/types/save';
 import parseSchema from '@/lib/parseSchema';
 import detectFormat from '@/lib/detectFormat';
 import validateSchema from '@/lib/validateSchema';
 import Toolbar from './Toolbar';
 import ValidationMessage from './ValidationMessage';
 import getValidationMessage from '@/lib/getValidationMessage';
-import type { ValidationResult } from '@/lib/getValidationMessage';
 
 const VALIDATION_DELAY = 1000;
 
@@ -63,9 +64,7 @@ export default function SwaggerEditor({
   const [validationError, setValidationError] =
     useState<ValidationResult | null>(null);
 
-  const [saveStatus, setSaveStatus] = useState<
-    'idle' | 'saving' | 'saved' | 'error'
-  >('idle');
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
 
   useEffect(() => {
     let cancelled = false;
