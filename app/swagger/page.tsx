@@ -9,8 +9,10 @@ export default function SwaggerWorkspace() {
   const [parsedSchema, setParsedSchema] = useState<SwaggerSchema | null>(null);
   return (
     <div className="py-7 overflow-hidden">
-      <h2 className="w-full text-center">Swagger Workplace</h2>
-      <div className="flex flex-col justify-center lg:flex-row w-full gap-6 p-5 bg-white text-gray-900 dark:text-white dark:bg-gray-800">
+      <h2 className="w-full text-xl font-bold text-center mb-4">
+        Swagger Workplace
+      </h2>
+      <div className="flex flex-col justify-center lg:flex-row w-full gap-6 p-5 bg-white text-gray-900">
         <SwaggerEditor schema={parsedSchema} onSchemaChange={setParsedSchema} />
         <SwaggerViewer schema={parsedSchema} />
       </div>

@@ -8,7 +8,7 @@ import type { SwaggerSchema } from '@/types/swagger';
 export default function SwaggerWorkspace() {
   const [parsedSchema, setParsedSchema] = useState<SwaggerSchema | null>(null);
   return (
-    <div className="p-5 bg-white text-gray-900 dark:text-white dark:bg-gray-800">
+    <div className="workplace p-5 bg-white text-gray-900">
       <SwaggerEditor schema={parsedSchema} onSchemaChange={setParsedSchema} />
       <SwaggerViewer schema={parsedSchema} />
     </div>

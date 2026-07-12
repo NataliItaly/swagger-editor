@@ -36,7 +36,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
       <div className="mt-4">
         <h4 className="font-medium">Headers</h4>
 
-        <pre className="mt-2 rounded bg-gray-100 dark:bg-gray-800 p-3 overflow-auto text-sm">
+        <pre className="mt-2 rounded bg-gray-100 p-3 overflow-auto text-sm">
           {JSON.stringify(response.headers, null, 2)}
         </pre>
       </div>
@@ -48,7 +48,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
           className={`mt-2 rounded p-3 overflow-auto text-sm ${
             isError
               ? 'bg-red-50 text-red-600 border border-red-200'
-              : 'bg-gray-100 dark:bg-gray-800'
+              : 'bg-gray-100'
           }`}
         >
           {formattedBody}

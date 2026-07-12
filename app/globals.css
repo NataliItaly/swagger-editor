@@ -1,3 +1,22 @@
 @import 'tailwindcss';
+/* @custom-variant dark (&:where(.dark, .dark *)); */
 
-@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html.dark {
+  --background: #111827;
+  --foreground: #f9fafb;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html.dark .workplace {
+  background-color: #111827;
+  color: white;
+}

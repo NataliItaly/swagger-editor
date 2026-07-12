@@ -180,9 +180,6 @@ export default function SwaggerEditor({
 
   return (
     <div className="flex-1 lg:flex-1/2 lg:max-w-1/2">
-      <div className="bg-red-600 dark:bg-black text-black dark:text-white p-8">
-        Test theme
-      </div>
       <Toolbar
         format={format}
         onConvertToJSON={switchToJSON}
