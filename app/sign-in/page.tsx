@@ -13,6 +13,8 @@ export default function SignPage() {
 
   const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -20,7 +22,11 @@ export default function SignPage() {
     if (error) {
       setError(error.message);
     } else {
-      router.push('/');
+      router.refresh();
+
+      setTimeout(() => {
+        router.push('/');
+      }, 100);
     }
   };
 
