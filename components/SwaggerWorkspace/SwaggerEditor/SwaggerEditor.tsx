@@ -12,6 +12,8 @@ import validateSchema from '@/lib/validateSchema';
 import Toolbar from './Toolbar';
 import ValidationMessage from './ValidationMessage';
 import getValidationMessage from '@/lib/getValidationMessage';
+import loadSchema from '@/lib/loadSchema';
+import saveSchema from '@/lib/saveSchema';
 
 const VALIDATION_DELAY = 1000;
 
@@ -67,29 +69,11 @@ export default function SwaggerEditor({
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
 
   useEffect(() => {
-    let cancelled = false;
-
-    async function loadSchema() {
-      try {
-        const res = await fetch('/api/schema');
-
-        if (!res.ok) return;
-
-        const data = await res.json();
-
-        if (!cancelled && data.schema) {
-          setEditorValue(data.schema);
-        }
-      } catch (err) {
-        console.error(err);
+    loadSchema().then((schema) => {
+      if (schema) {
+        setEditorValue(schema);
       }
-    }
-
-    void loadSchema();
-
-    return () => {
-      cancelled = true;
-    };
+    });
   }, []);
 
   function handleChange(value: string | undefined) {
@@ -114,30 +98,16 @@ export default function SwaggerEditor({
     try {
       setSaveStatus('saving');
 
-      const res = await fetch('/api/schema', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          schema: editorValue,
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to save schema');
-      }
+      await saveSchema(editorValue);
 
       setSaveStatus('saved');
-
-      alert('Schema saved');
 
       setTimeout(() => {
         setSaveStatus('idle');
       }, 2000);
     } catch (err) {
       setSaveStatus('error');
-      alert(err instanceof Error ? err.message : 'Unknown error');
+
       setTimeout(() => {
         setSaveStatus('idle');
       }, 3000);

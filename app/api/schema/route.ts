@@ -21,8 +21,19 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // TODO:
-  // save schema
+  const { error } = await supabase.from('saved_schemas').upsert(
+    {
+      user_id: user.id,
+      schema,
+    },
+    {
+      onConflict: 'user_id',
+    },
+  );
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
   return NextResponse.json({
     success: true,
@@ -47,8 +58,15 @@ export async function GET() {
     );
   }
 
-  // TODO:
-  // get schema
+  const { data, error } = await supabase
+    .from('saved_schemas')
+    .select('schema')
+    .eq('user_id', user.id)
+    .single();
+
+  if (error) {
+    return NextResponse.json({ schema: null });
+  }
 
   return NextResponse.json({
     schema: '',
