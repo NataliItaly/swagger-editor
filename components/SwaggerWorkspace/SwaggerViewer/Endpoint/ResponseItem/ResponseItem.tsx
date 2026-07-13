@@ -1,4 +1,4 @@
-import { getStatusColor } from '@/lib/getStausColor';
+import { getStatusColor } from '@/lib/getStatusColor';
 import type { Response } from '@/types/endpoint';
 
 export type ResponseItemProps = {
