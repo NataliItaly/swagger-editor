@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <main className="py-5">{children}</main>

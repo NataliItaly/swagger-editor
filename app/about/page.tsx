@@ -55,8 +55,8 @@ export default function AboutPage() {
           <Link href="https://github.com/NataliItaly">GitHub</Link>
         </p>
         <p>
-          Savely
-          <Link href="">GitHub</Link>
+          Savely Kosevich
+          <Link href="https://github.com/Save1i">GitHub</Link>
         </p>
       </div>
       <div>

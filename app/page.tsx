@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-4">
+    <div className="flex flex-col items-center justify-center gap-4">
       <h1 className="text-2xl font-bold">Welcome to swagger-no-5</h1>
       <div className="flex gap-4">
         <Link
@@ -26,6 +26,6 @@ export default function HomePage() {
           Try Swagger
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
