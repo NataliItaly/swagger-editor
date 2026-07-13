@@ -55,8 +55,8 @@ export default function AboutPage() {
           <Link href="https://github.com/NataliItaly">GitHub</Link>
         </p>
         <p>
-          Savely
-          <Link href="">GitHub</Link>
+          Savely Kosevich
+          <Link href="https://github.com/Save1i">GitHub</Link>
         </p>
       </div>
       <div>
@@ -75,3 +75,10 @@ export default function AboutPage() {
     </div>
   );
 }
+/**
+ * <Link href="https://www.wikipedia.org">
+  <a target="_blank" rel="noopener noreferrer">
+    Open Wikipedia in a new tab
+  </a>
+</Link>
+ */

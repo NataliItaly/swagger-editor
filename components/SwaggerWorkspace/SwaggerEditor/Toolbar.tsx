@@ -8,6 +8,7 @@ export type ToolbarProps = {
   onConvertToYAML: () => void;
   onSave: () => void;
   saveStatus: SaveStatus;
+  isAuthenticated: boolean;
 };
 
 export default function Toolbar({
@@ -16,6 +17,7 @@ export default function Toolbar({
   onConvertToYAML,
   onSave,
   saveStatus,
+  isAuthenticated,
 }: ToolbarProps) {
   return (
     <div className="mb-5 py-5">
@@ -35,17 +37,20 @@ export default function Toolbar({
       >
         Convert to YAML
       </Button>
-      <Button
-        className="px-5 py-3 cursor-pointer"
-        variant="secondary"
-        onClick={onSave}
-        disabled={saveStatus === 'saving'}
-      >
-        {saveStatus === 'idle' && 'Save schema'}
-        {saveStatus === 'saving' && 'Saving...'}
-        {saveStatus === 'saved' && 'Saved ✓'}
-        {saveStatus === 'error' && 'Save failed'}
-      </Button>
+
+      {isAuthenticated && (
+        <Button
+          className="px-5 py-3 cursor-pointer"
+          variant="secondary"
+          onClick={onSave}
+          disabled={saveStatus === 'saving'}
+        >
+          {saveStatus === 'idle' && 'Save schema'}
+          {saveStatus === 'saving' && 'Saving...'}
+          {saveStatus === 'saved' && 'Saved ✓'}
+          {saveStatus === 'error' && 'Save failed'}
+        </Button>
+      )}
     </div>
   );
 }
