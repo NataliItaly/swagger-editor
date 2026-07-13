@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import type { ValidationResult } from '@/lib/getValidationMessage';
 
 type ValidationMessageProps = {
