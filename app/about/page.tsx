@@ -75,3 +75,10 @@ export default function AboutPage() {
     </div>
   );
 }
+/**
+ * <Link href="https://www.wikipedia.org">
+  <a target="_blank" rel="noopener noreferrer">
+    Open Wikipedia in a new tab
+  </a>
+</Link>
+ */

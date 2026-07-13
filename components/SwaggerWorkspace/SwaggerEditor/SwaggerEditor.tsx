@@ -14,6 +14,7 @@ import ValidationMessage from './ValidationMessage';
 import getValidationMessage from '@/lib/getValidationMessage';
 import loadSchema from '@/lib/loadSchema';
 import saveSchema from '@/lib/saveSchema';
+import { supabase } from '@/lib/supabase';
 
 const VALIDATION_DELAY = 1000;
 
@@ -68,6 +69,8 @@ export default function SwaggerEditor({
 
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
     loadSchema().then((schema) => {
       if (schema) {
@@ -115,6 +118,18 @@ export default function SwaggerEditor({
   }
 
   useEffect(() => {
+    async function checkUser() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      setIsAuthenticated(!!user);
+    }
+
+    checkUser();
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(async () => {
       const format = detectFormat(editorValue);
       setFormat(format);
@@ -156,6 +171,7 @@ export default function SwaggerEditor({
         onConvertToYAML={switchToYAML}
         onSave={handleSave}
         saveStatus={saveStatus}
+        isAuthenticated={isAuthenticated}
       />
       <Editor
         className="h-64 mb-5"
