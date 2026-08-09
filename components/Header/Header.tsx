@@ -64,16 +64,3 @@ export default function Header() {
     </header>
   );
 }
-/**
- * <ul className="flex items-center gap-6 text-xl">
-          <li>
-            <Link href="/swagger">Swagger</Link>
-          </li>
-          <li>
-            <Link href="/history">History</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-        </ul>
- */

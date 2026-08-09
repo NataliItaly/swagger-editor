@@ -110,6 +110,7 @@ export default function SwaggerEditor({
       }, 2000);
     } catch (err) {
       setSaveStatus('error');
+      console.error('Failed to save schema:', err);
 
       setTimeout(() => {
         setSaveStatus('idle');
@@ -140,12 +141,14 @@ export default function SwaggerEditor({
         parsed = parseSchema(editorValue, format);
       } catch (e) {
         onSchemaChange(null);
+
         if (e instanceof Error) {
           setValidationError(getValidationMessage(e));
         }
 
         return;
       }
+
       onSchemaChange(parsed);
 
       try {
@@ -161,7 +164,7 @@ export default function SwaggerEditor({
     return function cleanup() {
       clearTimeout(timer);
     };
-  }, [editorValue]);
+  }, [editorValue, onSchemaChange]);
 
   return (
     <div className="flex-1 lg:flex-1/2 lg:max-w-1/2">
