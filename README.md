@@ -1,39 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Swagger Editor
 
-## Deploy
-[Link](https://swagger-editor-git-main-krylova.vercel.app/)
+A web-based Swagger/OpenAPI editor developed as a team project during the RS School React course. I contributed to the development of the application and continued working on the project after the course, including deployment and Supabase configuration.
 
-## Getting Started
+## Task
+[Link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/final.md)
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Original Team Repository
+[Link](https://github.com/dzzuze/swagger-no-5)
 
 ## Deploy on Vercel
+[Link](https://swagger-editor-git-main-krylova.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Swagger/OpenAPI schema editor
+- JSON and YAML support
+- Schema validation
+- API documentation preview
+- REST API client
+- Request history
+- Save schemas for authenticated users
+- User authentication with Supabase
+- Internationalization
+- Responsive UI
+- Dark/light theme
+
+## Technologies
+
+- Next.js
+- React
+- TypeScript
+- Supabase
+- Zustand
+- React Query
+- Monaco Editor
+- Tailwind CSS
+- Next-intl
+- Vitest
+
