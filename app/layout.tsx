@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/providers/theme-provider';
 import Header from '@/components/Header/Header';
 import AuthInitializer from '@/components/AuthInitializer';
+import MainContent from '@/components/MainContent/MainContent';
 
 export const metadata: Metadata = {
   title: 'swagger-no-5',
@@ -18,8 +19,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthInitializer>
-            <Header />
-            <main className="py-5">{children}</main>
+            <MainContent>{children}</MainContent>
           </AuthInitializer>
         </ThemeProvider>
       </body>
