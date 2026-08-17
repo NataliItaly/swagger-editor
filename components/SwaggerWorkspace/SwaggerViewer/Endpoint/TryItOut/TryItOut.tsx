@@ -159,7 +159,7 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
 
       {curlCommand && (
         <div className="mx-4">
-          <pre className="overflow-x-auto rounded bg-gray-200 p-3 text-sm">
+          <pre className="overflow-x-auto rounded bg-gray-200  dark:bg-gray-800 p-3 text-sm">
             {curlCommand}
           </pre>
 
