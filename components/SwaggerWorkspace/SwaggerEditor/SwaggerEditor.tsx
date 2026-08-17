@@ -1,6 +1,7 @@
 'use client';
 
-import Editor from '@monaco-editor/react';
+import Editor, { type OnMount } from '@monaco-editor/react';
+import { useTheme } from 'next-themes';
 import * as yaml from 'js-yaml';
 import { useState, useEffect } from 'react';
 import type { Format, SwaggerSchema } from '@/types/swagger';
@@ -27,6 +28,46 @@ export default function SwaggerEditor({
   schema,
   onSchemaChange,
 }: SwaggerEditorProps) {
+  const { resolvedTheme } = useTheme();
+
+  const handleEditorMount: OnMount = (editor, monaco) => {
+    monaco.editor.defineTheme('swagger-light', {
+      base: 'vs',
+      inherit: true,
+      rules: [],
+      colors: {
+        'editor.background': '#ffffff',
+        'editor.foreground': '#111827',
+        'editorLineNumber.foreground': '#9ca3af',
+        'editorLineNumber.activeForeground': '#374151',
+        'editorCursor.foreground': '#7e22ce',
+        'editor.selectionBackground': '#e9d5ff',
+        'editor.inactiveSelectionBackground': '#f3f4f6',
+        'editor.lineHighlightBackground': '#f9fafb',
+      },
+    });
+
+    monaco.editor.defineTheme('swagger-dark', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [],
+      colors: {
+        'editor.background': '#111827',
+        'editor.foreground': '#f9fafb',
+        'editorLineNumber.foreground': '#6b7280',
+        'editorLineNumber.activeForeground': '#d1d5db',
+        'editorCursor.foreground': '#a855f7',
+        'editor.selectionBackground': '#581c87',
+        'editor.inactiveSelectionBackground': '#374151',
+        'editor.lineHighlightBackground': '#1f2937',
+      },
+    });
+
+    monaco.editor.setTheme(
+      resolvedTheme === 'dark' ? 'swagger-dark' : 'swagger-light',
+    );
+  };
+
   const [editorValue, setEditorValue] = useState(
     `
       openapi: 3.0.0
@@ -177,10 +218,12 @@ export default function SwaggerEditor({
         isAuthenticated={isAuthenticated}
       />
       <Editor
-        className="h-64 mb-5"
+        className="h-96 mb-5"
         language={format}
         value={editorValue}
         onChange={handleChange}
+        onMount={handleEditorMount}
+        theme={resolvedTheme === 'dark' ? 'swagger-dark' : 'swagger-light'}
       />
       {validationError && <ValidationMessage validation={validationError} />}
     </div>
