@@ -40,5 +40,23 @@ export default async function executeRequest({
     throw new Error(result.error ?? 'Request failed');
   }
 
+  try {
+    await fetch('/api/history', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        method: method.toUpperCase(),
+        url,
+        headers: requestHeaders,
+        body: body ?? null,
+        response: result.body,
+      }),
+    });
+  } catch (error) {
+    console.error('Failed to save request history:', error);
+  }
+
   return result;
 }

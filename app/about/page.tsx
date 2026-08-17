@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col items-center gap-6 text-lg">
       <div className="lg:max-w-1/2 max-w-full">
-        <h1 className="text-purple-300 text-2xl font-bold text-center mb-3">
+        <h1 className="text-purple-900 dark:text-purple-300 text-2xl font-bold text-center mb-3">
           Swagger/OpenAPI UI
         </h1>
         <p className="mb-2.5 text-center">
@@ -22,37 +22,52 @@ export default function AboutPage() {
         </div>
       </div>
       <div className="lg:max-w-1/2  max-w-full">
-        <h2 className="text-purple-300 text-xl font-bold text-center">
+        <h2 className="text-purple-900 dark:text-purple-300 text-xl font-bold text-center">
           Technology Stack
         </h2>
         <div className="text-base">
-          <strong className="text-purple-300 text-lg">Framework:</strong>{' '}
+          <strong className="text-purple-900 dark:text-purple-300 text-lg">
+            Framework:
+          </strong>{' '}
           Next.js 16 (App Router), React 19, TypeScript
         </div>
         <div>
-          <strong className="text-purple-300">Styling:</strong> Tailwind CSS v4,
-          Shadcn/ui, Lucide, React icons
+          <strong className="text-purple-900 dark:text-purple-300">
+            Styling:
+          </strong>{' '}
+          Tailwind CSS v4, Shadcn/ui, Lucide, React icons
         </div>
         <div>
-          <strong className="text-purple-300">API & Data:</strong> OpenAPI 3.0,
-          Swagger Parser, js-yaml, Fetch API, Next.js Route Handlers
+          <strong className="text-purple-900 dark:text-purple-300">
+            API & Data:
+          </strong>{' '}
+          OpenAPI 3.0, Swagger Parser, js-yaml, Fetch API, Next.js Route
+          Handlers
         </div>
         <div>
-          <strong className="text-purple-300">Backend & Authentication:</strong>{' '}
+          <strong className="text-purple-900 dark:text-purple-300">
+            Backend & Authentication:
+          </strong>{' '}
           Supabase, Supabase Authentication, Supabase Database
         </div>
         <div>
-          <strong className="text-purple-300">State & Utilities:</strong> React
-          Hooks, TanStack React Query, Zustand (prepared for state management)
-          next-themes
+          <strong className="text-purple-900 dark:text-purple-300">
+            State & Utilities:
+          </strong>{' '}
+          React Hooks, TanStack React Query, Zustand (prepared for state
+          management) next-themes
         </div>
         <div>
-          <strong className="text-purple-300">Development Tools:</strong> ESLint
-          Prettier, Husky, lint-staged Vitest
+          <strong className="text-purple-900 dark:text-purple-300">
+            Development Tools:
+          </strong>{' '}
+          ESLint Prettier, Husky, lint-staged Vitest
         </div>
       </div>
       <div className="text-center">
-        <h2 className="text-purple-300 text-xl font-bold">Our Team</h2>
+        <h2 className="text-purple-900 dark:text-purple-300 text-xl font-bold">
+          Our Team
+        </h2>
         <p>
           Team lead: Tema Temov
           <Link href="https://github.com/dzzuze">GitHub</Link>
@@ -66,7 +81,7 @@ export default function AboutPage() {
           <Link href="https://github.com/Save1i">GitHub</Link>
         </p>
       </div>
-      <div className="text-center text-purple-300">
+      <div className="text-center text-purple-900 dark:text-purple-300">
         <p>
           <Link
             href="https://rs.school/"

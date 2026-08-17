@@ -6,7 +6,7 @@ import EndpointList from './Endpoint/EndpointList/EndpointList';
 export type SwaggerViewerProps = {
   schema: SwaggerSchema | null;
 };
-
+//dark:bg-gray-900 dark:text-white
 export default function SwaggerViewer({ schema }: SwaggerViewerProps) {
   if (!schema) {
     return (

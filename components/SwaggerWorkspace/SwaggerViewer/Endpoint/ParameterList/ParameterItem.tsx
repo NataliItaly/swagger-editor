@@ -25,7 +25,7 @@ export default function ParameterItem({
           )}
         </div>
 
-        <span className="rounded bg-gray-200 px-2 py-0.5 text-xs">
+        <span className="rounded bg-gray-200 dark:bg-gray-800 px-2 py-0.5 text-xs">
           {param.in}
         </span>
 
