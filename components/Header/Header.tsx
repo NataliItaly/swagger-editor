@@ -2,8 +2,8 @@
 
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import Link from 'next/link';
-import { signOutAction } from '@/app/actions/auth';
 import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 
 type HeaderProps = {
   isAuth: boolean;
@@ -13,8 +13,8 @@ export default function Header({ isAuth }: HeaderProps) {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOutAction();
-    router.refresh();
+    await supabase.auth.signOut();
+    router.push('/');
   };
 
   return (
@@ -23,19 +23,19 @@ export default function Header({ isAuth }: HeaderProps) {
         <Link href="/">
           <span className="text-2xl font-bold">SwaggerAPI</span>
         </Link>
-        {isAuth && (
-          <ul className="flex items-center gap-6 text-xl">
-            <li>
-              <Link href="/swagger">Swagger</Link>
-            </li>
+        <ul className="flex items-center gap-6 text-xl">
+          <li>
+            <Link href="/swagger">Swagger</Link>
+          </li>
+          {isAuth && (
             <li>
               <Link href="/history">History</Link>
             </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-          </ul>
-        )}
+          )}
+          <li>
+            <Link href="/about">About</Link>
+          </li>
+        </ul>
       </nav>
       <div className="flex items-center gap-4">
         <ThemeToggle />

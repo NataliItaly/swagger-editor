@@ -30,7 +30,7 @@ export default function MainContent({
   return (
     <>
       <Header isAuth={isAuth} />
-      <main className="py-5">{children}</main>
+      <main className="py-5 dark:bg-gray-900 dark:text-white">{children}</main>
     </>
   );
 }

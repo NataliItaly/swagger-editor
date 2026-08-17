@@ -25,7 +25,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
         : 'text-yellow-600';
 
   return (
-    <section className="mt-6 mx-4 mb-5 rounded border p-4 bg-gray-200">
+    <section className="mt-6 mx-4 mb-5 rounded border p-4 bg-gray-200 dark:bg-gray-800 dark:text-white">
       <h3 className="font-semibold text-lg">Response</h3>
 
       <div className="mt-3">
@@ -36,7 +36,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
       <div className="mt-4">
         <h4 className="font-medium">Headers</h4>
 
-        <pre className="mt-2 rounded bg-gray-100 p-3 overflow-auto text-sm">
+        <pre className="mt-2 rounded bg-gray-100 dark:bg-gray-900 dark:text-white p-3 overflow-auto text-sm">
           {JSON.stringify(response.headers, null, 2)}
         </pre>
       </div>
