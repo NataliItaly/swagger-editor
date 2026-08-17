@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/providers/theme-provider';
-import Header from '@/components/Header/Header';
 import AuthInitializer from '@/components/AuthInitializer';
 import MainContent from '@/components/MainContent/MainContent';
 
