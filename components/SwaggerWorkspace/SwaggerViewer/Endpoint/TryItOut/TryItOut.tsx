@@ -59,7 +59,9 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
       path,
       requestState.parameters,
     );
-
+    console.log('serverUrl:', serverUrl);
+    console.log('path:', path);
+    console.log('request URL:', url);
     const hasBody = !['get', 'delete', 'head'].includes(method);
 
     if (hasBody && !isValidJson(requestState.body)) {
@@ -69,6 +71,7 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
         body: 'Request body contains invalid JSON',
       });
 
+      setLoading(false);
       return;
     }
     try {

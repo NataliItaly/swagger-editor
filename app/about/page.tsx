@@ -70,15 +70,33 @@ export default function AboutPage() {
         </h2>
         <p>
           Team lead: Tema Temov
-          <Link href="https://github.com/dzzuze">GitHub</Link>
+          <Link
+            href="https://github.com/dzzuze"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
         </p>
         <p>
           Nataliya Krylova
-          <Link href="https://github.com/NataliItaly">GitHub</Link>
+          <Link
+            href="https://github.com/NataliItaly"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
         </p>
         <p>
           Savely Kosevich
-          <Link href="https://github.com/Save1i">GitHub</Link>
+          <Link
+            href="https://github.com/Save1i"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
         </p>
       </div>
       <div className="text-center text-purple-900 dark:text-purple-300">
