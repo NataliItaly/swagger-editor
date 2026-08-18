@@ -1,14 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+/* import { useState } from 'react';
 import SwaggerEditor from '@/components/SwaggerWorkspace/SwaggerEditor/SwaggerEditor';
 import SwaggerViewer from '@/components/SwaggerWorkspace/SwaggerViewer/SwaggerViewer';
-import type { SwaggerSchema } from '@/types/swagger';
+import type { SwaggerSchema } from '@/types/swagger'; */
+import SwaggerWorkspace from '@/components/SwaggerWorkspace/SwaggerWorkspace';
 
-export default function SwaggerWorkspace() {
-  const [parsedSchema, setParsedSchema] = useState<SwaggerSchema | null>(null);
-  return (
-    <div className="py-7 overflow-hidden ">
+export default function SwaggerPage() {
+  //const [parsedSchema, setParsedSchema] = useState<SwaggerSchema | null>(null);
+  return <SwaggerWorkspace />;
+}
+{
+  /* <div className="py-7 overflow-hidden ">
       <h2 className="w-full text-xl font-bold text-center mb-4">
         Swagger Workplace
       </h2>
@@ -16,6 +19,5 @@ export default function SwaggerWorkspace() {
         <SwaggerEditor schema={parsedSchema} onSchemaChange={setParsedSchema} />
         <SwaggerViewer schema={parsedSchema} />
       </div>
-    </div>
-  );
+    </div> */
 }
