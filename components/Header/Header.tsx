@@ -4,6 +4,7 @@ import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
+import LanguageToggle from '../LanguageToggle/LanguageToggle';
 
 type HeaderProps = {
   isAuth: boolean;
@@ -38,6 +39,7 @@ export default function Header({ isAuth }: HeaderProps) {
         </ul>
       </nav>
       <div className="flex items-center gap-4">
+        <LanguageToggle />
         <ThemeToggle />
         {isAuth && (
           <button

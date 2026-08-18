@@ -31,7 +31,7 @@ export default async function HomePage() {
       )}
       <div className="flex justify-center mt-5">
         <Link
-          className="py-4 px-7 border rounded-xl border-gray-300 bg-purple-900 transition-all duration-500 hover:bg-purple-700 cursor-pointer"
+          className="py-4 px-7 border rounded-xl border-gray-300 bg-gray-200 dark:bg-purple-900 transition-all duration-500 hover:bg-purple-500 hover:text-white cursor-pointer"
           href="/swagger"
         >
           Try Swagger
