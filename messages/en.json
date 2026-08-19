@@ -1,0 +1,14 @@
+{
+  "Header": {
+    "swagger": "Swagger",
+    "history": "History",
+    "about": "About",
+    "signOut": "Sign Out"
+  },
+  "HomePage": {
+    "title": "Welcome to swagger-no-5",
+    "login": "Log in",
+    "registration": "Registration",
+    "trySwagger": "Try Swagger"
+  }
+}

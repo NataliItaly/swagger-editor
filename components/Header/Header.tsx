@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import LanguageToggle from '../LanguageToggle/LanguageToggle';
+import { useTranslations } from 'next-intl';
 
 type HeaderProps = {
   isAuth: boolean;
@@ -12,6 +13,8 @@ type HeaderProps = {
 
 export default function Header({ isAuth }: HeaderProps) {
   const router = useRouter();
+
+  const t = useTranslations('Header');
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -30,11 +33,11 @@ export default function Header({ isAuth }: HeaderProps) {
           </li>
           {isAuth && (
             <li>
-              <Link href="/history">History</Link>
+              <Link href="/history">{t('history')}</Link>
             </li>
           )}
           <li>
-            <Link href="/about">About</Link>
+            <Link href="/about">{t('about')}</Link>
           </li>
         </ul>
       </nav>
@@ -46,7 +49,7 @@ export default function Header({ isAuth }: HeaderProps) {
             onClick={handleSignOut}
             className="text-base font-medium px-4 py-1.5 border border-purple-500 rounded-xl hover:bg-purple-700 hover:text-white transition-all duration-500 cursor-pointer"
           >
-            Sign Out
+            {t('signOut')}
           </button>
         )}
       </div>

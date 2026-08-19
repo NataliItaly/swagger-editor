@@ -1,0 +1,14 @@
+{
+  "Header": {
+    "swagger": "Swagger",
+    "history": "Cronologia",
+    "about": "Informazioni",
+    "signOut": "Esci"
+  },
+  "HomePage": {
+    "title": "Benvenuto in swagger-no-5",
+    "login": "Accedi",
+    "registration": "Registrazione",
+    "trySwagger": "Prova Swagger"
+  }
+}

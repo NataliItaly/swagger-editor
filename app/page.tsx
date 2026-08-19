@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-server';
+import { getTranslations } from 'next-intl/server';
 
 export default async function HomePage() {
   const supabase = await createClient();
+
+  const t = await getTranslations('HomePage');
 
   const {
     data: { user },
@@ -12,20 +15,20 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <h1 className="text-2xl font-bold">Welcome to swagger-no-5</h1>
+      <h1 className="text-2xl font-bold">{t('title')}</h1>
       {!isAuth && (
         <div className="flex gap-4">
           <Link
             href="/sign-in"
             className="px-4 py-2 border border-gray-300 text-white rounded-xl hover:bg-gray-700 transition duration-500"
           >
-            log in
+            {t('login')}
           </Link>
           <Link
             href="/sign-up"
             className="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-700 transition duration-500"
           >
-            Registration
+            {t('registration')}
           </Link>
         </div>
       )}
@@ -34,7 +37,7 @@ export default async function HomePage() {
           className="py-4 px-7 border rounded-xl border-gray-300 bg-gray-200 dark:bg-purple-900 transition-all duration-500 hover:bg-purple-500 hover:text-white cursor-pointer"
           href="/swagger"
         >
-          Try Swagger
+          {t('trySwagger')}
         </Link>
       </div>
     </div>
