@@ -1,0 +1,78 @@
+{
+  "Header": {
+    "swagger": "Swagger",
+    "history": "Cronologia",
+    "about": "Informazioni",
+    "signOut": "Esci"
+  },
+  "HomePage": {
+    "title": "Benvenuto in swagger-no-5",
+    "login": "Accedi",
+    "registration": "Registrazione",
+    "trySwagger": "Prova Swagger"
+  },
+  "SwaggerViewer": {
+    "schema": "Nessun schema caricato",
+    "endpoints": "Nessun endpoints"
+  },
+  "Toolbar": {
+    "convertYaml": "Convertire in yaml",
+    "convertJson": "Convertire in json",
+    "saveSchema": "Salva schema",
+    "saving": "Salvataggio...",
+    "saved": "Salvato ✓",
+    "saveFailed": "Salvataggio non riuscito"
+  },
+  "TryItOut": {
+    "execute": "Esegui",
+    "executing": "Esecuzione...",
+    "generateCurl": "Genera cURL",
+    "copy": "Copia"
+  },
+  "OperationDescription": {
+    "description": "Descrizione"
+  },
+  "OperationResponses": {
+    "responses": "Risposte"
+  },
+  "Summary": {
+    "summary": "Riepilogo"
+  },
+  "ParameterItem": {
+    "required": "Obbligatorio"
+  },
+  "ParameterList": {
+    "parameterList": "Parametri"
+  },
+  "RequestBody": {
+    "requestBody": "Corpo della richiesta",
+    "description": "Descrizione",
+    "required": "Obbligatorio",
+    "content": "Contenuto",
+    "schema": "Schema",
+    "example": "Esempio"
+  },
+  "ResponseViewer": {
+    "response": "Risposta",
+    "status": "Stato",
+    "headers": "Header",
+    "body": "Corpo"
+  },
+  "HistoryList": {
+    "requestHistory": "Cronologia delle richieste",
+    "failedHistory": "Caricamento della cronologia delle richieste non riuscito",
+    "noSavedRequests": "Nessuna richiesta salvata trovata",
+    "showDetails": "Mostra dettagli",
+    "headers": "Header",
+    "body": "Corpo",
+    "response": "Risposta"
+  },
+  "About": {
+    "title": "Interfaccia Swagger/OpenAPI",
+    "intro": "Questa applicazione è stata originariamente sviluppata come progetto di gruppo per il Final Project del corso React di RS School. Dopo aver completato il progetto di gruppo, ho continuato a sviluppare l'applicazione autonomamente, migliorandone e ampliandone le funzionalità e l'interfaccia.",
+    "description": "Swagger Workspace è un'applicazione web per lavorare con le specifiche OpenAPI (Swagger). Consente di creare, modificare, validare ed esplorare gli schemi API nei formati YAML e JSON. L'applicazione analizza automaticamente i documenti OpenAPI, visualizza gli endpoint disponibili, consente di eseguire le richieste direttamente dall'interfaccia, genera comandi cURL e mostra le risposte del server in un formato leggibile.",
+    "teamRepo": "Repository originale del team",
+    "myRepo": "Il mio fork e sviluppo successivo",
+    "team": "Il nostro team"
+  }
+}

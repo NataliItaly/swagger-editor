@@ -1,10 +1,13 @@
 import type { ProxyResponse } from '@/types/proxy';
+import { useTranslations } from 'next-intl';
 
 export type ResponseViewerProps = {
   response: ProxyResponse | null;
 };
 
 export default function ResponseViewer({ response }: ResponseViewerProps) {
+  const t = useTranslations('ResponseViewer');
+
   if (!response) return null;
 
   const isError = response.status === 0 || response.status >= 400;
@@ -26,15 +29,15 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
 
   return (
     <section className="mt-6 mx-4 mb-5 rounded border p-4 bg-gray-200 dark:bg-gray-900 dark:text-white">
-      <h3 className="font-semibold text-lg">Response</h3>
+      <h3 className="font-semibold text-lg">{t('response')}</h3>
 
       <div className="mt-3">
-        <span className="font-medium">Status:</span>{' '}
+        <span className="font-medium">{t('status')}:</span>{' '}
         <span className={statusColor}>{response.status}</span>
       </div>
 
       <div className="mt-4">
-        <h4 className="font-medium">Headers</h4>
+        <h4 className="font-medium">{t('headers')}</h4>
 
         <pre className="mt-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white p-3 overflow-auto text-sm">
           {JSON.stringify(response.headers, null, 2)}
@@ -42,7 +45,7 @@ export default function ResponseViewer({ response }: ResponseViewerProps) {
       </div>
 
       <div className="mt-4">
-        <h4 className="font-medium">Body</h4>
+        <h4 className="font-medium">{t('body')}</h4>
 
         <pre
           className={`mt-2 rounded p-3 overflow-auto text-sm dark:bg-gray-800 dark:text-white ${

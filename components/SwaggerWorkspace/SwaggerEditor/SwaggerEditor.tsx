@@ -138,7 +138,6 @@ export default function SwaggerEditor({
   }
 
   async function handleSave() {
-    console.log('Save schema', schema);
     try {
       setSaveStatus('saving');
 

@@ -1,8 +1,11 @@
 import { createClient } from '@/lib/supabase-server';
 import { redirect } from 'next/navigation';
 import HistoryList from '@/components/HistoryList';
+import { getTranslations } from 'next-intl/server';
 
 export default async function HistoryPage() {
+  const t = await getTranslations('HistoryList');
+
   const supabase = await createClient();
   const {
     data: { user },
@@ -19,16 +22,12 @@ export default async function HistoryPage() {
 
   if (error) {
     console.error(error);
-    return (
-      <div className="text-red-500 font-medium">
-        Failed to load request history
-      </div>
-    );
+    return <div className="text-red-500 font-medium">{t('failedHistory')}</div>;
   }
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Request History</h1>
+      <h1 className="text-2xl font-bold mb-4">{t('requestHistory')}</h1>
       <HistoryList history={history || []} />
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Parameter } from '@/types/endpoint';
+import { useTranslations } from 'next-intl';
 
 export type ParameterItemProps = {
   param: Parameter;
@@ -11,6 +12,8 @@ export default function ParameterItem({
   value,
   onChange,
 }: ParameterItemProps) {
+  const t = useTranslations('ParameterItem');
+
   return (
     <li className="rounded border p-2">
       <div className="flex flex-col gap-2">
@@ -30,7 +33,7 @@ export default function ParameterItem({
         </span>
 
         {param.required && (
-          <span className="text-red-500 text-xs">required</span>
+          <span className="text-red-500 text-xs">{t('required')}</span>
         )}
       </div>
 
