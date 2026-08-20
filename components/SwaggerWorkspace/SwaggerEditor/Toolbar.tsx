@@ -1,6 +1,7 @@
 import type { Format } from '@/types/swagger';
 import type { SaveStatus } from '@/types/save';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 export type ToolbarProps = {
   format: Format;
@@ -19,6 +20,8 @@ export default function Toolbar({
   saveStatus,
   isAuthenticated,
 }: ToolbarProps) {
+  const t = useTranslations('Toolbar');
+
   return (
     <div className="mb-5 py-5">
       <Button
@@ -27,7 +30,7 @@ export default function Toolbar({
         onClick={onConvertToJSON}
         disabled={format === 'json'}
       >
-        Convert to JSON
+        {t('convertJson')}
       </Button>
       <Button
         className="px-5 py-3 cursor-pointer"
@@ -35,7 +38,7 @@ export default function Toolbar({
         onClick={onConvertToYAML}
         disabled={format === 'yaml'}
       >
-        Convert to YAML
+        {t('convertYaml')}
       </Button>
 
       {isAuthenticated && (
@@ -45,10 +48,10 @@ export default function Toolbar({
           onClick={onSave}
           disabled={saveStatus === 'saving'}
         >
-          {saveStatus === 'idle' && 'Save schema'}
-          {saveStatus === 'saving' && 'Saving...'}
-          {saveStatus === 'saved' && 'Saved ✓'}
-          {saveStatus === 'error' && 'Save failed'}
+          {saveStatus === 'idle' && t('saveSchema')}
+          {saveStatus === 'saving' && t('saving')}
+          {saveStatus === 'saved' && t('saved')}
+          {saveStatus === 'error' && t('saveFailed')}
         </Button>
       )}
     </div>

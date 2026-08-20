@@ -10,5 +10,68 @@
     "login": "Log in",
     "registration": "Registration",
     "trySwagger": "Try Swagger"
+  },
+  "SwaggerViewer": {
+    "schema": "No schema loaded",
+    "endpoints": "No endpoints"
+  },
+  "Toolbar": {
+    "convertYaml": "Convert to yaml",
+    "convertJson": "Convert to json",
+    "saveSchema": "Save schema",
+    "saving": "Saving...",
+    "saved": "Saved ✓",
+    "saveFailed": "Save failed"
+  },
+  "TryItOut": {
+    "execute": "Execute",
+    "generateCurl": "Generate cURL",
+    "copy": "Copy"
+  },
+  "OperationDescription": {
+    "description": "Description"
+  },
+  "OperationResponses": {
+    "responses": "Responses"
+  },
+  "Summary": {
+    "summary": "Summary"
+  },
+  "ParameterItem": {
+    "required": "required"
+  },
+  "ParameterList": {
+    "parameterList": "Parameter List"
+  },
+  "RequestBody": {
+    "requestBody": "Request Body",
+    "description": "Description",
+    "required": "Required",
+    "content": "Content",
+    "schema": "Schema",
+    "example": "Example"
+  },
+  "ResponseViewer": {
+    "response": "Response",
+    "status": "Status",
+    "headers": "Headers",
+    "body": "Body"
+  },
+  "HistoryList": {
+    "requestHistory": "Request History",
+    "failedHistory": "Failed to load request history",
+    "noSavedRequests": "No saved requests found",
+    "showDetails": "Show details",
+    "headers": "Headers",
+    "body": "Body",
+    "response": "Response"
+  },
+  "About": {
+    "title": "Swagger/OpenAPI App",
+    "intro": "This application was originally created as a team project for the RS School React Course Final Project. After completing the team project, I continued developing the application independently, improving and extending its functionality and UI.",
+    "description": "Swagger Workspace is a web application for working with OpenAPI (Swagger) specifications. It allows users to create, edit, validate, and explore API schemas in both YAML and JSON formats. The application automatically parses OpenAPI documents, displays available endpoints, lets users execute requests directly from the interface, generates cURL commands, and provides formatted server responses.",
+    "teamRepo": "Original Team Repository Link",
+    "myRepo": "My fork and continued development",
+    "team": "Our team"
   }
 }
