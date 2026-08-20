@@ -1,5 +1,6 @@
 import type { Parameter } from '@/types/endpoint';
 import ParameterItem from './ParameterItem';
+import { useTranslations } from 'next-intl';
 
 export type ParameterListProps = {
   parameterList: Parameter[];
@@ -12,9 +13,11 @@ export default function ParameterList({
   parameterValues,
   onParameterChange,
 }: ParameterListProps) {
+  const t = useTranslations('ParameterList');
+
   return (
     <section className="px-4 py-2">
-      <h3 className="font-semibold">ParameterList:</h3>
+      <h3 className="font-semibold">{t('parameterList')}:</h3>
       <ul className="space-y-2">
         {parameterList.map((param) => {
           const key = `${param.in}:${param.name}`;

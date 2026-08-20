@@ -10,6 +10,7 @@ import isValidJson from '@/lib/isValidJson';
 import executeRequest from '@/lib/executeRequest';
 import validateRequestParameters from '@/lib/validateRequestParameters';
 import buildCurlCommand from '@/lib/buildCurlCommand';
+import { useTranslations } from 'next-intl';
 
 export type TryItOutProps = {
   endpoint: Endpoint;
@@ -18,6 +19,8 @@ export type TryItOutProps = {
 
 export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
   const { operation, method, path } = endpoint;
+
+  const t = useTranslations('TryItOut');
 
   const [loading, setLoading] = useState(false);
 
@@ -146,7 +149,7 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
           onClick={handleExecute}
           disabled={loading}
         >
-          {loading ? 'Executing...' : 'Execute'}
+          {loading ? t('esecuzione') : t('execute')}
         </Button>
 
         <Button
@@ -154,7 +157,7 @@ export default function TryItOut({ endpoint, serverUrl }: TryItOutProps) {
           className="px-5 py-3 m-4 border-gray-500 cursor-pointer"
           onClick={handleGenerateCurl}
         >
-          Generate cURL
+          {t('generateCurl')}
         </Button>
       </div>
 

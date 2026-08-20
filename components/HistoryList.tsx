@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface HistoryRecord {
   id: string;
   method: string;
@@ -11,8 +13,10 @@ interface HistoryRecord {
 }
 
 export default function HistoryList({ history }: { history: HistoryRecord[] }) {
+  const t = useTranslations('HistoryList');
+
   if (history.length === 0) {
-    return <p className="text-gray-500">No saved requests found.</p>;
+    return <p className="text-gray-500">{t('noSavedRequests')}.</p>;
   }
 
   return (
@@ -36,12 +40,14 @@ export default function HistoryList({ history }: { history: HistoryRecord[] }) {
 
           <details className="mt-3 group">
             <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-medium select-none">
-              Show details
+              {t('showDetails')}
             </summary>
 
             <div className="mt-3 space-y-3 text-sm border-t pt-3">
               <div>
-                <strong className="text-muted-foreground">Headers:</strong>
+                <strong className="text-muted-foreground">
+                  {t('headers')}:
+                </strong>
                 <pre className="mt-1 bg-muted p-2 rounded overflow-x-auto font-mono text-xs max-h-40">
                   {JSON.stringify(item.headers, null, 2)}
                 </pre>
@@ -49,7 +55,9 @@ export default function HistoryList({ history }: { history: HistoryRecord[] }) {
 
               {item.body && (
                 <div>
-                  <strong className="text-muted-foreground">Body:</strong>
+                  <strong className="text-muted-foreground">
+                    {t('body')}:
+                  </strong>
                   <pre className="mt-1 bg-muted p-2 rounded overflow-x-auto font-mono text-xs max-h-40 whitespace-pre-wrap">
                     {item.body}
                   </pre>
@@ -57,7 +65,9 @@ export default function HistoryList({ history }: { history: HistoryRecord[] }) {
               )}
 
               <div>
-                <strong className="text-muted-foreground">Response:</strong>
+                <strong className="text-muted-foreground">
+                  {t('response')}:
+                </strong>
                 <pre className="mt-1 bg-muted p-2 rounded overflow-x-auto font-mono text-xs max-h-60 whitespace-pre-wrap">
                   {item.response}
                 </pre>
