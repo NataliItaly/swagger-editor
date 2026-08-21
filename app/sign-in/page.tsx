@@ -53,7 +53,7 @@ export default function SignPage() {
         {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-purple-700 hover:bg-purple-900 text-white p-2 rounded-xl"
+          className="w-full bg-purple-700 hover:bg-purple-900 p-2 rounded-xl transition duration-500"
         >
           log in
         </button>

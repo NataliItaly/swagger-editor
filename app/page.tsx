@@ -20,13 +20,13 @@ export default async function HomePage() {
         <div className="flex gap-4">
           <Link
             href="/sign-in"
-            className="px-4 py-2 border border-gray-300 text-white rounded-xl hover:bg-gray-700 transition duration-500"
+            className="px-4 py-2 border border-gray-300 rounded-xl hover:bg-purple-500 transition duration-500"
           >
             {t('login')}
           </Link>
           <Link
             href="/sign-up"
-            className="px-4 py-2 border border-gray-300 rounded-xl hover:bg-gray-700 transition duration-500"
+            className="px-4 py-2 border border-gray-300 rounded-xl hover:bg-purple-500 transition duration-500"
           >
             {t('registration')}
           </Link>
@@ -34,7 +34,7 @@ export default async function HomePage() {
       )}
       <div className="flex justify-center mt-5">
         <Link
-          className="py-4 px-7 border rounded-xl border-gray-300 bg-gray-200 dark:bg-purple-900 transition-all duration-500 hover:bg-purple-500 hover:text-white cursor-pointer"
+          className="py-4 px-7 border rounded-xl border-gray-300 bg-gray-200 dark:bg-purple-900 transition-all duration-500 hover:bg-purple-500 hover:text-white cursor-pointer transition duration-500"
           href="/swagger"
         >
           {t('trySwagger')}

@@ -24,20 +24,38 @@ export default function Header({ isAuth }: HeaderProps) {
   return (
     <header className="flex justify-between gap-6 items-center px-6 py-5 border-b border-gray-400 ">
       <nav className="flex gap-10 items-center">
-        <Link href="/">
+        <Link
+          href="/"
+          className="hover:text-purple-600 transition duration-500"
+        >
           <span className="text-2xl font-bold">SwaggerAPI</span>
         </Link>
         <ul className="flex items-center gap-6 text-xl">
           <li>
-            <Link href="/swagger">Swagger</Link>
+            <Link
+              href="/swagger"
+              className="hover:text-purple-600 transition duration-500"
+            >
+              Swagger
+            </Link>
           </li>
           {isAuth && (
             <li>
-              <Link href="/history">{t('history')}</Link>
+              <Link
+                href="/history"
+                className="hover:text-purple-600 transition duration-500"
+              >
+                {t('history')}
+              </Link>
             </li>
           )}
           <li>
-            <Link href="/about">{t('about')}</Link>
+            <Link
+              href="/about"
+              className="hover:text-purple-600 transition duration-500"
+            >
+              {t('about')}
+            </Link>
           </li>
         </ul>
       </nav>
