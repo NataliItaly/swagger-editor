@@ -39,7 +39,7 @@ export default function HistoryList({ history }: { history: HistoryRecord[] }) {
           </div>
 
           <details className="mt-3 group">
-            <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-medium select-none">
+            <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-medium select-none transition duration-500">
               {t('showDetails')}
             </summary>
 
