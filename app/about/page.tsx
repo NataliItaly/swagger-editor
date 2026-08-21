@@ -14,7 +14,7 @@ export default function AboutPage() {
           <p>{t('intro')}</p>
           <p className="mt-2.5 text-center">
             <a
-              className="text-purple-800 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-100 text-xl"
+              className="text-purple-800 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-100 text-xl transition duration-500"
               href="https://github.com/dzzuze/swagger-no-5"
               target="_blank"
             >
@@ -23,7 +23,7 @@ export default function AboutPage() {
           </p>
           <p className="mb-2.5 text-center">
             <a
-              className="text-purple-800 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-100 text-xl"
+              className="text-purple-800 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-100 text-xl transition duration-500"
               href="https://github.com/NataliItaly/swagger-editor"
               target="_blank"
             >
@@ -83,7 +83,7 @@ export default function AboutPage() {
         <p>
           Team lead: Tema Temov&nbsp;
           <Link
-            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400"
+            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400 transition duration-500"
             href="https://github.com/dzzuze"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,7 +94,7 @@ export default function AboutPage() {
         <p>
           Nataliya Krylova&nbsp;
           <Link
-            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400"
+            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400 transition duration-500"
             href="https://github.com/NataliItaly"
             target="_blank"
             rel="noopener noreferrer"
@@ -105,7 +105,7 @@ export default function AboutPage() {
         <p>
           Savely Kosevich&nbsp;
           <Link
-            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400"
+            className="text-xl text-purple-900 hover:text-purple-700 dark:text-purple-400 transition duration-500"
             href="https://github.com/Save1i"
             target="_blank"
             rel="noopener noreferrer"
@@ -117,7 +117,7 @@ export default function AboutPage() {
       <div className="text-center text-purple-900 dark:text-purple-400">
         <p>
           <Link
-            className="hover:text-purple-500"
+            className="hover:text-purple-500 transition duration-500"
             href="https://rs.school/"
             target="_blank"
             rel="noopener noreferrer"
@@ -127,7 +127,7 @@ export default function AboutPage() {
         </p>
         <p>
           <Link
-            className="hover:text-purple-500"
+            className="hover:text-purple-500 transition duration-500"
             href="https://rs.school/courses/reactjs"
             target="_blank"
             rel="noopener noreferrer"
@@ -137,7 +137,7 @@ export default function AboutPage() {
         </p>
         <p>
           <Link
-            className="hover:text-purple-500"
+            className="hover:text-purple-500 transition duration-500"
             href="https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/final.md"
             target="_blank"
             rel="noopener noreferrer"

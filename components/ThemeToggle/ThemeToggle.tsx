@@ -17,7 +17,7 @@ export default function ThemeToggle() {
   }, []);
   if (!mounted) {
     return (
-      <button className="rounded-md border border-gray-400 cursor-pointer p-2">
+      <button className="rounded-md border border-gray-400 cursor-pointer p-2 hover:bg-purple-500 transition duration-500">
         <Moon size={20} />
       </button>
     );
@@ -25,7 +25,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="rounded-md border border-gray-400 cursor-pointer p-2"
+      className="rounded-md border border-gray-400 cursor-pointer p-2 hover:bg-purple-500 transition duration-500"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}

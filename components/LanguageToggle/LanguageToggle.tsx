@@ -20,7 +20,7 @@ export default function LanguageToggle() {
         type="button"
         disabled={isPending}
         onClick={() => changeLanguage('en')}
-        className="block rounded-md w-8 py-1 cursor-pointer hover:bg-purple-800 hover:text-white transition"
+        className="block rounded-md w-8 py-1 cursor-pointer hover:bg-purple-800 hover:text-white transition duration-500"
       >
         EN
       </button>
@@ -29,7 +29,7 @@ export default function LanguageToggle() {
         type="button"
         disabled={isPending}
         onClick={() => changeLanguage('it')}
-        className="block rounded-md w-8 py-1 cursor-pointer hover:bg-purple-800 hover:text-white transition"
+        className="block rounded-md w-8 py-1 cursor-pointer hover:bg-purple-800 hover:text-white transition duration-500"
       >
         IT
       </button>

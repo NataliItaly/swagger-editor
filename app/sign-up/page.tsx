@@ -47,7 +47,7 @@ export default function SignUpPage() {
         {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-purple-700 hover:bg-purple-900 rounded-xl text-white p-2"
+          className="w-full bg-purple-700 hover:bg-purple-900 rounded-xl text-white p-2 transition duration-500"
         >
           Register
         </button>
